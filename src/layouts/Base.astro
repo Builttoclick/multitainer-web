@@ -121,18 +121,36 @@ const allSchema = [negocio, ...(breadcrumb ? [breadcrumb] : []), ...extra];
       (function () {
         var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         var sb = document.getElementById('sbar');
-        function onScroll() {
-          if (!sb) return;
+        var parallax = Array.prototype.slice.call(document.querySelectorAll('[data-parallax]'));
+        var ticking = false;
+        function frame() {
+          ticking = false;
           var de = document.documentElement;
-          var max = (de.scrollHeight - de.clientHeight) || 1;
-          sb.style.transform = 'scaleX(' + Math.min(de.scrollTop / max, 1) + ')';
+          if (sb) {
+            var max = (de.scrollHeight - de.clientHeight) || 1;
+            sb.style.transform = 'scaleX(' + Math.min(de.scrollTop / max, 1) + ')';
+          }
+          if (!reduce) {
+            for (var i = 0; i < parallax.length; i++) {
+              var el = parallax[i];
+              var host = el.parentElement || el;
+              var r = host.getBoundingClientRect();
+              if (r.bottom < -200 || r.top > window.innerHeight + 200) continue;
+              var f = parseFloat(el.getAttribute('data-parallax')) || 0.12;
+              el.style.transform = 'translate3d(0,' + (r.top * -f).toFixed(1) + 'px,0)';
+            }
+          }
         }
-        onScroll();
+        function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }
+        frame();
         window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('resize', onScroll, { passive: true });
+
         if (reduce) {
           document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('is-in'); });
           return;
         }
+
         var io = new IntersectionObserver(function (entries) {
           entries.forEach(function (e) {
             if (!e.isIntersecting) return;
@@ -141,6 +159,19 @@ const allSchema = [negocio, ...(breadcrumb ? [breadcrumb] : []), ...extra];
           });
         }, { threshold: 0.14, rootMargin: '0px 0px -6% 0px' });
         document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+
+        /* botones magnéticos (solo mouse fino) */
+        if (window.matchMedia('(hover:hover) and (pointer:fine)').matches) {
+          document.querySelectorAll('.mag').forEach(function (b) {
+            b.addEventListener('pointermove', function (e) {
+              var r = b.getBoundingClientRect();
+              var mx = e.clientX - r.left - r.width / 2;
+              var my = e.clientY - r.top - r.height / 2;
+              b.style.transform = 'translate(' + (mx * 0.22).toFixed(1) + 'px,' + (my * 0.35).toFixed(1) + 'px)';
+            });
+            b.addEventListener('pointerleave', function () { b.style.transform = ''; });
+          });
+        }
       })();
     </script>
   </body>
