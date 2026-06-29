@@ -11,6 +11,7 @@ export const site = {
   city: 'Mariano Roque Alonso',
   region: 'Central',
   country: 'PY',
+  founded: 2010, // "Pioneros en modificaciones desde 2010"
   addressStreet: 'Gral. Patricio Escobar c/ Gral. J. M. Bruguez',
   addressFull: 'Gral. Patricio Escobar c/ Gral. J. M. Bruguez, Mariano Roque Alonso 111008',
   postalCode: '111008',
@@ -41,3 +42,14 @@ export const nav = [
 // URL de WhatsApp con mensaje pre-cargado
 export const waLink = (msg = 'Hola Multitainer, quiero una cotización.') =>
   `${site.whatsapp}?text=${encodeURIComponent(msg)}`;
+
+// Equipo (del sitio viejo). Iniciales para el avatar monograma.
+export const team = [
+  { nombre: 'Marco Kroker', rol: 'Director', ini: 'MK' },
+  { nombre: 'Raquel Leaño', rol: 'Gerente Administrativa y Financiera', ini: 'RL' },
+  { nombre: 'Noelia Olmedo', rol: 'Jefa de Taller', ini: 'NO' },
+  { nombre: 'Personal calificado', rol: 'Soldadores, pintores y choferes', ini: '+' },
+];
+
+// Equipo técnico propio (sin subcontratar)
+export const equipoTecnico = 'arquitectos, ingenieros, soldadores, electricistas, plomeros y especialistas en terminaciones';

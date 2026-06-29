@@ -1,7 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
-import { site, waLink } from '../data/site';
+import { site, waLink, team, equipoTecnico } from '../data/site';
 import { servicios } from '../data/servicios';
 import { zonas } from '../data/zonas';
 
@@ -15,13 +15,13 @@ const ticker = ['Oficinas', 'Obradores', 'Vestuarios', 'Showrooms', 'Baños', 'C
 
 // Tipos de espacios (use-cases)
 const usos = [
+  { t: 'Casas', img: 'exterior-edificio-modular.jpg', href: '/servicios/modificacion/' },
   { t: 'Oficinas', img: 'int-oficina-moderno.jpg', href: '/servicios/modificacion/' },
   { t: 'Obradores', img: 'exterior-obrador.jpg', href: '/servicios/modificacion/' },
   { t: 'Vestuarios', img: 'vestuario-deportivo.jpg', href: '/servicios/modificacion/' },
   { t: 'Showrooms', img: '4pets-showroom.jpg', href: '/servicios/modificacion/' },
   { t: 'Baños', img: 'bano-blindex.jpg', href: '/servicios/modificacion/' },
   { t: 'Depósitos', img: 'exterior-modulo-oficina.jpg', href: '/servicios/venta/' },
-  { t: 'Campamentos', img: 'obrador-instalado.jpg', href: '/servicios/alquiler/' },
   { t: 'Dos plantas', img: 'exterior-dos-plantas.jpg', href: '/servicios/modificacion/' },
 ];
 
@@ -82,12 +82,13 @@ const desc = 'Multitainer construye con contenedores marítimos en Asunción y G
   <section class="pad" id="servicios"><div class="wrap">
     <div class="head reveal">
       <span class="eyebrow">Qué hacemos</span>
-      <h2>Tres formas de resolver tu espacio</h2>
-      <p>Del contenedor crudo al módulo terminado e instalado en tu obra.</p>
+      <h2>Todo el contenedor, en un solo lugar</h2>
+      <p>Construimos, alquilamos, vendemos y transportamos. Con equipo técnico propio, de la primera llamada a la entrega.</p>
     </div>
     <div class="svc">
       {servicios.map((s, i) => (
-        <a class="card spot reveal" style={`--d:${0.06 * i}s`} href={`/servicios/${s.slug}/`}>
+        <a class={`card spot reveal${s.estrella ? ' is-star' : ''}`} style={`--d:${0.06 * i}s`} href={`/servicios/${s.slug}/`}>
+          {s.estrella && <span class="star-badge">★ Estrella</span>}
           <div class="num">0{i + 1}</div>
           <div class="ic"><svg viewBox="0 0 24 24" set:html={s.icon}></svg></div>
           <h3>{s.nombre}</h3>
@@ -186,6 +187,24 @@ const desc = 'Multitainer construye con contenedores marítimos en Asunción y G
     </div>
   </div></section>
 
+  <!-- EQUIPO -->
+  <section class="pad equipo-sec" id="equipo"><div class="wrap">
+    <div class="head center reveal">
+      <span class="eyebrow">Nuestro equipo</span>
+      <h2>Quién va a hacer tu proyecto</h2>
+      <p>No subcontratamos: {equipoTecnico}, todo bajo el mismo techo en nuestra planta de Mariano Roque Alonso.</p>
+    </div>
+    <div class="team">
+      {team.map((m, i) => (
+        <div class="team-card reveal" style={`--d:${0.05 * i}s`}>
+          <div class="team-av">{m.ini}</div>
+          <h4>{m.nombre}</h4>
+          <div class="rol">{m.rol}</div>
+        </div>
+      ))}
+    </div>
+  </div></section>
+
   <!-- ZONAS -->
   <section class="pad zones" id="zonas"><div class="wrap">
     <div class="head reveal" style="margin-bottom:18px">
@@ -255,7 +274,7 @@ const desc = 'Multitainer construye con contenedores marítimos en Asunción y G
   /* ===== SERVICE CARD SPOTLIGHT ===== */
   .svc .card.spot::after { content: ""; position: absolute; inset: 0; border-radius: 4px; background: radial-gradient(260px circle at var(--mx, 50%) var(--my, 50%), rgba(237,180,63,.14), transparent 55%); opacity: 0; transition: opacity .25s; pointer-events: none; z-index: 0; }
   .svc .card.spot:hover::after { opacity: 1; }
-  .svc .card.spot > * { position: relative; z-index: 1; }
+  .svc .card.spot > *:not(.star-badge) { position: relative; z-index: 1; }
 
   /* ===== ANTES / DESPUÉS ===== */
   .ba { position: relative; aspect-ratio: 16 / 10; border-radius: 6px; overflow: hidden; border: 1px solid var(--line); user-select: none; touch-action: pan-y; box-shadow: var(--shadow); }

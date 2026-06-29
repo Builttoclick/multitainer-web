@@ -10,15 +10,16 @@ const desc = 'Servicios de Multitainer: alquiler de contenedores y módulos equi
   <section class="phero"><div class="wrap">
     <div class="crumbs"><a href="/">Inicio</a><span>›</span>Servicios</div>
     <span class="eyebrow">Qué hacemos</span>
-    <h1>Soluciones en <b>contenedor</b>, de punta a punta</h1>
-    <p class="lead">Del contenedor crudo al módulo terminado e instalado en tu obra. Estas son las tres formas en que trabajamos.</p>
+    <h1>Todo el <b>contenedor</b>, en un solo lugar</h1>
+    <p class="lead">Construimos, alquilamos, vendemos y transportamos contenedores marítimos. Con equipo técnico propio y logística propia, de la primera llamada a la entrega.</p>
     <div class="cta-row"><a class="btn btn-amber" href={waLink()} target="_blank" rel="noopener">Cotización en 24 h →</a></div>
   </div></section>
 
   <section class="pad"><div class="wrap">
     <div class="svc">
       {servicios.map((s, i) => (
-        <a class="card reveal" style={`--d:${0.06 * i}s`} href={`/servicios/${s.slug}/`}>
+        <a class={`card reveal${s.estrella ? ' is-star' : ''}`} style={`--d:${0.06 * i}s`} href={`/servicios/${s.slug}/`}>
+          {s.estrella && <span class="star-badge">★ Estrella</span>}
           <div class="num">0{i + 1}</div>
           <div class="ic"><svg viewBox="0 0 24 24" set:html={s.icon}></svg></div>
           <h3>{s.nombre}</h3>

@@ -1,41 +1,71 @@
 ---
 import Base from '../layouts/Base.astro';
-import { site, waLink } from '../data/site';
+import { site, waLink, team, equipoTecnico } from '../data/site';
 
-const desc = 'Multitainer: empresa paraguaya de construcción modular en contenedores marítimos, con planta en Mariano Roque Alonso. Diseñamos, modificamos, alquilamos y vendemos contenedores para todo el Gran Asunción.';
+const desc = 'Multitainer: empresa paraguaya especializada en contenedores marítimos desde 2010, con taller propio en Mariano Roque Alonso. Construcción modular, alquiler, venta y transporte, todo con equipo propio.';
+
+const segmentos = [
+  { t: 'Familias que quieren construir', d: 'Una casa de contenedor bien ejecutada es una vivienda real, confortable y durable. Para familias con terreno propio que buscan una alternativa más rápida y predecible que la obra tradicional.' },
+  { t: 'Empresas que necesitan infraestructura rápida', d: 'Oficinas, depósitos, vestuarios, showrooms: todo lo que una empresa necesita para operar sin depender de alquileres caros ni de obras que tardan meses.' },
+  { t: 'Constructoras y proyectos en obra', d: 'Obradores profesionales, módulos sanitarios y espacios de trabajo en zonas remotas. Listos antes de que arranquen los trabajos y trasladables cuando el proyecto termina.' },
+  { t: 'Emprendedores y comercios', d: 'Un local diferente, un punto de venta con identidad fuerte, un espacio de atención que se destaca. Sin los costos ni los tiempos de un local tradicional.' },
+  { t: 'Propietarios que necesitan espacio extra', d: 'Una habitación adicional, un taller, un estudio o un depósito seguro en el terreno, sin ampliar la construcción principal ni meses de obra.' },
+  { t: 'Quien necesita un contenedor estándar', d: 'Para almacenamiento, transporte de mercadería o como base de un proyecto propio, con la garantía de que lo que comprás está verificado y llega instalado.' },
+];
 ---
-<Base title="Sobre nosotros" titleTail="construcción modular en contenedores en Paraguay" description={desc}>
+<Base title="Sobre nosotros" titleTail="contenedores marítimos en Paraguay desde 2010" description={desc}>
   <section class="phero"><div class="wrap">
     <div class="crumbs"><a href="/">Inicio</a><span>›</span>Sobre nosotros</div>
     <span class="eyebrow">Quiénes somos</span>
-    <h1>Transformamos contenedores en <b>espacios</b></h1>
-    <p class="lead">Somos una empresa paraguaya de construcción modular, con planta propia en Mariano Roque Alonso.</p>
+    <h1>Pioneros en modificaciones <b>desde 2010</b></h1>
+    <p class="lead">Una empresa paraguaya especializada en contenedores marítimos, con taller propio en Mariano Roque Alonso.</p>
   </div></section>
 
   <section class="pad"><div class="wrap">
     <div class="split">
       <div class="prose">
-        <p>En Multitainer convertimos contenedores marítimos en soluciones prácticas y adaptables: oficinas, obradores, vestuarios, showrooms, baños y edificios modulares. Trabajamos de principio a fin —diseño, fabricación e instalación— para entregarte el espacio listo para usar.</p>
-        <p>Desde nuestra planta en Mariano Roque Alonso atendemos a empresas, constructoras, comercios e instituciones de todo el Gran Asunción y el país. Marcas como <b>4 Pets</b> y <b>CONMEBOL</b> ya confiaron en nosotros.</p>
-        <h2>Por qué construir con contenedores</h2>
-        <ul>
-          <li>Obra más rápida y limpia que la construcción tradicional.</li>
-          <li>Estructura resistente, móvil y reutilizable.</li>
-          <li>Terminación a medida: del módulo básico al espacio premium.</li>
-          <li>Entrega e instalación en tu predio, en todo el Gran Asunción.</li>
-        </ul>
-        <h2>Cómo trabajamos</h2>
-        <p>Nos contás qué necesitás, te cotizamos en 24 horas con precio y plazo, fabricamos en planta y entregamos la unidad instalada. Sencillo y sin sorpresas.</p>
+        <p>Somos una empresa joven en la industria paraguaya, con una gran experiencia: nos ganamos la confianza de grandes emprendedores y empresas. Brindamos venta, alquiler, modificación y transporte de contenedores marítimos en todo el país, con la garantía que avala nuestra trayectoria.</p>
+        <p>Multitainer nació para resolver un problema concreto: en Paraguay no había una empresa que manejara el universo completo de los contenedores con equipo técnico propio y logística integrada.</p>
+        <h2>Todo bajo el mismo techo</h2>
+        <p>Hoy operamos desde Mariano Roque Alonso con un taller completo, grúas propias, vehículos propios y un equipo que incluye {equipoTecnico}. Todo coordinado internamente.</p>
+        <p>Cuando contratás con Multitainer no estás contratando a un intermediario que después busca quién ejecuta el trabajo. Estás contratando directamente al equipo que lo hace, de la primera llamada a la entrega final. El resultado: menos demoras, menos fricciones y más control sobre el resultado.</p>
       </div>
       <div class="media">
         <img src="/fotos/int-terminado.jpg" alt="Interior de contenedor terminado por Multitainer" loading="lazy" />
         <ul class="ulist" style="margin-top:24px">
-          <li>Planta propia en Mariano Roque Alonso</li>
-          <li>Diseño, obra y entrega llave en mano</li>
-          <li>Clientes como 4 Pets y CONMEBOL</li>
-          <li>Cobertura en todo el Gran Asunción</li>
+          <li>Taller y planta propios en Mariano Roque Alonso</li>
+          <li>Equipo técnico propio, sin subcontratar</li>
+          <li>Grúas y vehículos propios</li>
+          <li>Cobertura en todo Paraguay</li>
         </ul>
       </div>
+    </div>
+  </div></section>
+
+  <!-- EQUIPO -->
+  <section class="pad equipo-sec" style="padding-top:0"><div class="wrap">
+    <div class="head center"><span class="eyebrow">Nuestro equipo</span><h2>Quién hace tu proyecto</h2></div>
+    <div class="team">
+      {team.map((m) => (
+        <div class="team-card">
+          <div class="team-av">{m.ini}</div>
+          <h4>{m.nombre}</h4>
+          <div class="rol">{m.rol}</div>
+        </div>
+      ))}
+    </div>
+  </div></section>
+
+  <!-- PARA QUIÉN -->
+  <section class="pad" style="padding-top:0"><div class="wrap">
+    <div class="head"><span class="eyebrow">Para quién trabajamos</span><h2>¿Te identificás con alguno?</h2></div>
+    <div class="seg">
+      {segmentos.map((s) => (
+        <div class="seg-card">
+          <h3>{s.t}</h3>
+          <p>{s.d}</p>
+        </div>
+      ))}
     </div>
   </div></section>
 
@@ -46,3 +76,12 @@ const desc = 'Multitainer: empresa paraguaya de construcción modular en contene
     <a class="btn btn-amber" href={waLink()} target="_blank" rel="noopener">Escribir por WhatsApp →</a>
   </section>
 </Base>
+
+<style>
+  .seg { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .seg-card { background: var(--ink2); border: 1px solid var(--line); border-radius: 6px; padding: 26px 24px; transition: .2s; }
+  .seg-card:hover { border-color: var(--amber); transform: translateY(-4px); }
+  .seg-card h3 { font-size: 17px; color: #fff; margin-bottom: 8px; text-transform: none; letter-spacing: 0; }
+  .seg-card p { color: var(--mut); font-size: 14.5px; }
+  @media (max-width: 900px) { .seg { grid-template-columns: 1fr; } }
+</style>
