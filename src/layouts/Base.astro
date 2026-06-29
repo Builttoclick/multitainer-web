@@ -1,0 +1,147 @@
+---
+import '../styles/global.css';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import { site, waLink } from '../data/site';
+import { zonas } from '../data/zonas';
+
+interface Props {
+  title?: string;
+  titleTail?: string;
+  description?: string;
+  image?: string;
+  schema?: object | object[];
+  noindex?: boolean;
+}
+const {
+  title = site.name,
+  titleTail,
+  description = 'Multitainer: construcción modular, alquiler y venta de contenedores en Asunción y Gran Asunción. Oficinas, obradores, vestuarios y showrooms llave en mano. Cotización en 24 horas.',
+  image = '/fotos/hero-oficina-portuaria.jpg',
+  schema,
+  noindex = false,
+} = Astro.props;
+
+const tail = titleTail ?? 'alquiler, venta y modificación de contenedores cerca tuyo';
+const fullTitle = title === site.name
+  ? `Multitainer · Contenedores y construcción modular en Paraguay | ${tail}`
+  : `${title} · Multitainer | ${tail}`;
+
+const canonical = new URL(Astro.url.pathname, site.url).href;
+const ogImage = new URL(image, site.url).href;
+
+// LocalBusiness / GeneralContractor — NAP canónico
+const negocio = {
+  '@context': 'https://schema.org',
+  '@type': 'GeneralContractor',
+  '@id': `${site.url}/#multitainer`,
+  name: site.legalName,
+  alternateName: 'Multitainer',
+  slogan: site.tagline,
+  url: site.url,
+  logo: `${site.url}/brand/logo.png`,
+  image: [`${site.url}${image}`],
+  telephone: `+${site.phoneIntl}`,
+  email: site.email,
+  priceRange: '₲₲',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: site.addressStreet,
+    addressLocality: site.city,
+    addressRegion: site.region,
+    postalCode: site.postalCode,
+    addressCountry: site.country,
+  },
+  geo: { '@type': 'GeoCoordinates', latitude: site.geo.lat, longitude: site.geo.lng },
+  areaServed: [...zonas.map((z) => z.nombre), 'Gran Asunción', 'Paraguay'],
+  ...(site.facebook || site.instagram ? { sameAs: [site.facebook, site.instagram].filter(Boolean) } : {}),
+  openingHoursSpecification: [
+    { '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'], opens: '07:00', closes: '17:30' },
+  ],
+};
+
+// Breadcrumbs automáticos desde la ruta
+const segs = Astro.url.pathname.split('/').filter(Boolean);
+let acc = '';
+const crumbs = [{ name: 'Inicio', url: site.url + '/' }];
+segs.forEach((s, i) => {
+  acc += '/' + s;
+  const name = i === segs.length - 1
+    ? (title === site.name ? s : title)
+    : s.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
+  crumbs.push({ name, url: new URL(acc + '/', site.url).href });
+});
+const breadcrumb = segs.length ? {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: crumbs.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.name, item: c.url })),
+} : null;
+
+const extra = schema ? (Array.isArray(schema) ? schema : [schema]) : [];
+const allSchema = [negocio, ...(breadcrumb ? [breadcrumb] : []), ...extra];
+---
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#0c0d10" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Multitainer" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:locale" content="es_PY" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Multitainer — construcción modular en contenedores" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    {allSchema.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}
+  </head>
+  <body>
+    <Navbar />
+    <main><slot /></main>
+    <Footer />
+    <div class="ribbon"><a class="wa" href={waLink()} target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">WhatsApp</a></div>
+    <script is:inline>
+      (function () {
+        var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var sb = document.getElementById('sbar');
+        function onScroll() {
+          if (!sb) return;
+          var de = document.documentElement;
+          var max = (de.scrollHeight - de.clientHeight) || 1;
+          sb.style.transform = 'scaleX(' + Math.min(de.scrollTop / max, 1) + ')';
+        }
+        onScroll();
+        window.addEventListener('scroll', onScroll, { passive: true });
+        if (reduce) {
+          document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('is-in'); });
+          return;
+        }
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (e) {
+            if (!e.isIntersecting) return;
+            e.target.classList.add('is-in');
+            io.unobserve(e.target);
+          });
+        }, { threshold: 0.14, rootMargin: '0px 0px -6% 0px' });
+        document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+      })();
+    </script>
+  </body>
+</html>

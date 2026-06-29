@@ -1,0 +1,53 @@
+---
+import Base from '../../layouts/Base.astro';
+import { site, waLink } from '../../data/site';
+import { servicios } from '../../data/servicios';
+import { zonas } from '../../data/zonas';
+
+const desc = 'Áreas de servicio de Multitainer: Mariano Roque Alonso, Asunción, San Lorenzo, Luque, Capiatá, Lambaré, Fernando de la Mora, Areguá y Villeta. Entrega e instalación de contenedores y módulos en todo el Gran Asunción.';
+---
+<Base title="Áreas de servicio" titleTail="contenedores y construcción modular en todo el Gran Asunción" description={desc}>
+  <section class="phero"><div class="wrap">
+    <div class="crumbs"><a href="/">Inicio</a><span>›</span>Áreas de servicio</div>
+    <span class="eyebrow">Dónde trabajamos</span>
+    <h1>Asunción y todo el <b>Gran Asunción</b></h1>
+    <p class="lead">Con base y planta en Mariano Roque Alonso, entregamos e instalamos contenedores y módulos en las 9 zonas del Gran Asunción.</p>
+    <div class="cta-row"><a class="btn btn-amber" href={waLink()} target="_blank" rel="noopener">Cotización en 24 h →</a></div>
+  </div></section>
+
+  <section class="pad"><div class="wrap">
+    <div class="pgrid">
+      {zonas.map((z) => (
+        <a class="pcard" href={`/areas-de-servicio/${z.slug}/`}>
+          <div class="body">
+            <div class="cat">Área de servicio</div>
+            <h3>{z.nombre}</h3>
+            <p>{z.hero}</p>
+            <div class="arr" style="margin-top:14px;font-family:var(--h);font-weight:800;text-transform:uppercase;font-size:13px;letter-spacing:.06em;color:var(--amber)">Ver zona →</div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div></section>
+
+  <section class="pad zones" style="padding-top:0;padding-bottom:64px"><div class="wrap">
+    <div class="head" style="margin-bottom:24px"><span class="eyebrow">Lo que hacemos</span><h2>Servicios en cada zona</h2></div>
+    <div class="svc">
+      {servicios.map((s) => (
+        <a class="card" href={`/servicios/${s.slug}/`}>
+          <div class="ic"><svg viewBox="0 0 24 24" set:html={s.icon}></svg></div>
+          <h3>{s.nombre}</h3>
+          <p>{s.hero}</p>
+          <div class="arr">Ver {s.nombre.toLowerCase()} →</div>
+        </a>
+      ))}
+    </div>
+  </div></section>
+
+  <section class="band">
+    <span class="eyebrow">Hablemos hoy</span>
+    <h2>Llegamos a tu zona</h2>
+    <p>Contanos dónde estás y qué necesitás. Coordinamos la entrega e instalación.</p>
+    <a class="btn btn-amber" href={waLink()} target="_blank" rel="noopener">Escribir por WhatsApp →</a>
+  </section>
+</Base>

@@ -1,0 +1,48 @@
+---
+import Base from '../layouts/Base.astro';
+import { site, waLink } from '../data/site';
+
+const desc = 'Multitainer: empresa paraguaya de construcción modular en contenedores marítimos, con planta en Mariano Roque Alonso. Diseñamos, modificamos, alquilamos y vendemos contenedores para todo el Gran Asunción.';
+---
+<Base title="Sobre nosotros" titleTail="construcción modular en contenedores en Paraguay" description={desc}>
+  <section class="phero"><div class="wrap">
+    <div class="crumbs"><a href="/">Inicio</a><span>›</span>Sobre nosotros</div>
+    <span class="eyebrow">Quiénes somos</span>
+    <h1>Transformamos contenedores en <b>espacios</b></h1>
+    <p class="lead">Somos una empresa paraguaya de construcción modular, con planta propia en Mariano Roque Alonso.</p>
+  </div></section>
+
+  <section class="pad"><div class="wrap">
+    <div class="split">
+      <div class="prose">
+        <p>En Multitainer convertimos contenedores marítimos en soluciones prácticas y adaptables: oficinas, obradores, vestuarios, showrooms, baños y edificios modulares. Trabajamos de principio a fin —diseño, fabricación e instalación— para entregarte el espacio listo para usar.</p>
+        <p>Desde nuestra planta en Mariano Roque Alonso atendemos a empresas, constructoras, comercios e instituciones de todo el Gran Asunción y el país. Marcas como <b>4 Pets</b> y <b>CONMEBOL</b> ya confiaron en nosotros.</p>
+        <h2>Por qué construir con contenedores</h2>
+        <ul>
+          <li>Obra más rápida y limpia que la construcción tradicional.</li>
+          <li>Estructura resistente, móvil y reutilizable.</li>
+          <li>Terminación a medida: del módulo básico al espacio premium.</li>
+          <li>Entrega e instalación en tu predio, en todo el Gran Asunción.</li>
+        </ul>
+        <h2>Cómo trabajamos</h2>
+        <p>Nos contás qué necesitás, te cotizamos en 24 horas con precio y plazo, fabricamos en planta y entregamos la unidad instalada. Sencillo y sin sorpresas.</p>
+      </div>
+      <div class="media">
+        <img src="/fotos/int-terminado.jpg" alt="Interior de contenedor terminado por Multitainer" loading="lazy" />
+        <ul class="ulist" style="margin-top:24px">
+          <li>Planta propia en Mariano Roque Alonso</li>
+          <li>Diseño, obra y entrega llave en mano</li>
+          <li>Clientes como 4 Pets y CONMEBOL</li>
+          <li>Cobertura en todo el Gran Asunción</li>
+        </ul>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="band">
+    <span class="eyebrow">Hablemos hoy</span>
+    <h2>Construyamos tu espacio</h2>
+    <p>Contanos qué necesitás y te cotizamos en 24 horas.</p>
+    <a class="btn btn-amber" href={waLink()} target="_blank" rel="noopener">Escribir por WhatsApp →</a>
+  </section>
+</Base>

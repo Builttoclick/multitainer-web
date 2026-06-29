@@ -1,0 +1,83 @@
+---
+import Base from '../layouts/Base.astro';
+import { site, waLink } from '../data/site';
+
+const desc = 'Contactá a Multitainer: WhatsApp 0981 223 938, (021) 753 900, recepcion@multitainer.com.py. Planta en Gral. Patricio Escobar c/ Bruguez, Mariano Roque Alonso. Cotización en 24 horas.';
+---
+<Base title="Contacto" titleTail="cotización de contenedores y módulos en 24 horas" description={desc}>
+  <section class="phero"><div class="wrap">
+    <div class="crumbs"><a href="/">Inicio</a><span>›</span>Contacto</div>
+    <span class="eyebrow">Hablemos</span>
+    <h1>Cotizá tu proyecto en <b>24 horas</b></h1>
+    <p class="lead">Escribinos por WhatsApp o completá el formulario y te respondemos con precio y plazo.</p>
+  </div></section>
+
+  <section class="pad"><div class="wrap">
+    <div class="split">
+      <!-- Formulario (compone un WhatsApp) -->
+      <div>
+        <form class="form" id="cform">
+          <div>
+            <label for="nombre">Nombre</label>
+            <input id="nombre" name="nombre" type="text" required placeholder="Tu nombre" />
+          </div>
+          <div>
+            <label for="servicio">¿Qué necesitás?</label>
+            <select id="servicio" name="servicio">
+              <option>Alquiler de módulos</option>
+              <option>Venta de contenedores</option>
+              <option>Modificación a medida</option>
+              <option>No estoy seguro / otro</option>
+            </select>
+          </div>
+          <div>
+            <label for="zona">Zona</label>
+            <input id="zona" name="zona" type="text" placeholder="Ej. Mariano Roque Alonso" />
+          </div>
+          <div>
+            <label for="mensaje">Mensaje</label>
+            <textarea id="mensaje" name="mensaje" placeholder="Contanos qué proyecto tenés en mente"></textarea>
+          </div>
+          <button class="btn btn-amber" type="submit">Enviar por WhatsApp →</button>
+          <p style="font-size:13px;color:var(--mut)">Al enviar se abre WhatsApp con tu mensaje listo para mandar.</p>
+        </form>
+      </div>
+
+      <!-- Datos de contacto -->
+      <div class="cinfo">
+        <div class="row"><div><div class="k">WhatsApp</div><div class="v"><a href={site.whatsapp} target="_blank" rel="noopener">{site.whatsappLabel}</a></div></div></div>
+        <div class="row"><div><div class="k">Teléfono</div><div class="v"><a href={`tel:+${site.phoneIntl}`}>{site.phone}</a></div></div></div>
+        <div class="row"><div><div class="k">Email</div><div class="v"><a href={`mailto:${site.email}`}>{site.email}</a></div></div></div>
+        <div class="row"><div><div class="k">Dirección</div><div class="v">{site.addressFull}</div></div></div>
+        <div class="row"><div><div class="k">Horario</div><div class="v">{site.hours}</div></div></div>
+        {site.gbpEmbed
+          ? <iframe class="ft-map" style="height:240px" src={site.gbpEmbed} loading="lazy" title="Ubicación de Multitainer" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          : <div class="ft-map-ph" style="height:240px">Mapa de Google Business · pendiente de pegar el embed real</div>}
+      </div>
+    </div>
+  </div></section>
+
+  <section class="band">
+    <span class="eyebrow">¿Preferís escribir directo?</span>
+    <h2>Estamos a un mensaje</h2>
+    <a class="btn btn-amber" href={waLink()} target="_blank" rel="noopener">Abrir WhatsApp →</a>
+  </section>
+</Base>
+
+<script is:inline define:vars={{ wa: site.whatsapp }}>
+  (function () {
+    var f = document.getElementById('cform');
+    if (!f) return;
+    f.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var n = (f.nombre.value || '').trim();
+      var s = f.servicio.value;
+      var z = (f.zona.value || '').trim();
+      var m = (f.mensaje.value || '').trim();
+      var txt = 'Hola Multitainer, soy ' + (n || 'un cliente') + '. Necesito: ' + s + '.';
+      if (z) txt += ' Zona: ' + z + '.';
+      if (m) txt += ' ' + m;
+      window.open(wa + '?text=' + encodeURIComponent(txt), '_blank', 'noopener');
+    });
+  })();
+</script>

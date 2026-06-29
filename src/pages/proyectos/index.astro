@@ -1,0 +1,83 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { site, waLink } from '../../data/site';
+
+const CAT_LABEL: Record<string, string> = {
+  oficina: 'Oficinas', obrador: 'Obradores', vestuario: 'Vestuarios',
+  showroom: 'Showrooms', campamento: 'Campamentos', bano: 'Baños', 'dos-plantas': 'Dos plantas',
+};
+
+const proyectos = (await getCollection('proyectos')).sort((a, b) => (a.data.orden ?? 0) - (b.data.orden ?? 0));
+const cats = [...new Set(proyectos.map((p) => p.data.categoria))];
+
+const desc = 'Proyectos de Multitainer: oficinas, obradores, vestuarios, showrooms y edificios modulares construidos en contenedores marítimos en Paraguay. Obras para 4 Pets, CONMEBOL y empresas de todo el país.';
+
+const itemList = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Proyectos — Multitainer',
+  mainEntity: {
+    '@type': 'ItemList',
+    itemListElement: proyectos.map((p, i) => ({
+      '@type': 'ListItem', position: i + 1, name: p.data.titulo, url: `${site.url}/proyectos/${p.id}/`,
+    })),
+  },
+};
+---
+<Base title="Proyectos" titleTail="oficinas, vestuarios y showrooms en contenedor que ya entregamos" description={desc} schema={itemList}>
+  <section class="phero"><div class="wrap">
+    <div class="crumbs"><a href="/">Inicio</a><span>›</span>Proyectos</div>
+    <span class="eyebrow">Portafolio</span>
+    <h1>Obras que ya <b>entregamos</b></h1>
+    <p class="lead">Oficinas, obradores, vestuarios y showrooms en contenedores marítimos, para empresas y obras de todo el país.</p>
+  </div></section>
+
+  <section class="pad"><div class="wrap">
+    <div class="filters" id="filters">
+      <button class="active" data-cat="all">Todos</button>
+      {cats.map((c) => <button data-cat={c}>{CAT_LABEL[c] ?? c}</button>)}
+    </div>
+    <div class="pgrid" id="pgrid">
+      {proyectos.map((p) => (
+        <a class="pcard" data-cat={p.data.categoria} href={`/proyectos/${p.id}/`}>
+          <div class="ph"><img src={p.data.portada} alt={p.data.portada_alt ?? p.data.titulo} loading="lazy" /></div>
+          <div class="body">
+            <div class="cat">{p.data.cliente ? p.data.cliente : (CAT_LABEL[p.data.categoria] ?? p.data.categoria)}</div>
+            <h3>{p.data.titulo}</h3>
+            <p>{p.data.resumen}</p>
+            <div class="meta">
+              {p.data.zona && <span>📍 {p.data.zona}</span>}
+              {p.data.medida && <span>📦 {p.data.medida}</span>}
+              {p.data.anio && <span>🗓 {p.data.anio}</span>}
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div></section>
+
+  <section class="band">
+    <span class="eyebrow">Tu proyecto es el próximo</span>
+    <h2>Contanos qué necesitás</h2>
+    <p>Te cotizamos en 24 horas, con precio y plazo.</p>
+    <a class="btn btn-amber" href={waLink()} target="_blank" rel="noopener">Escribir por WhatsApp →</a>
+  </section>
+</Base>
+
+<script is:inline>
+  (function () {
+    var fs = document.getElementById('filters');
+    if (!fs) return;
+    fs.addEventListener('click', function (e) {
+      var b = e.target.closest('button'); if (!b) return;
+      fs.querySelectorAll('button').forEach(function (x) { x.classList.remove('active'); });
+      b.classList.add('active');
+      var cat = b.getAttribute('data-cat');
+      document.querySelectorAll('#pgrid .pcard').forEach(function (card) {
+        var show = cat === 'all' || card.getAttribute('data-cat') === cat;
+        card.style.display = show ? '' : 'none';
+      });
+    });
+  })();
+</script>

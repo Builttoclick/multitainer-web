@@ -1,0 +1,94 @@
+---
+import Base from '../../layouts/Base.astro';
+import { site, waLink } from '../../data/site';
+import { servicios, getServicio } from '../../data/servicios';
+import { zonas } from '../../data/zonas';
+
+export async function getStaticPaths() {
+  return servicios.map((s) => ({ params: { slug: s.slug }, props: { s } }));
+}
+const { s } = Astro.props;
+const otros = servicios.filter((x) => x.slug !== s.slug);
+
+const h1 = `${s.categoria} en Asunción y Gran Asunción`;
+
+const serviceSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: s.categoria,
+  serviceType: s.categoria,
+  description: s.metaDesc,
+  provider: { '@id': `${site.url}/#multitainer` },
+  areaServed: [...zonas.map((z) => z.nombre), 'Gran Asunción'],
+};
+const faqSchema = s.faqs.length ? {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: s.faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+} : null;
+const schema = faqSchema ? [serviceSchema, faqSchema] : [serviceSchema];
+---
+<Base title={s.metaTitle} titleTail={s.titleTail} description={s.metaDesc} image={s.foto} schema={schema}>
+  <section class="phero"><div class="wrap">
+    <div class="crumbs"><a href="/">Inicio</a><span>›</span><a href="/servicios/">Servicios</a><span>›</span>{s.nombre}</div>
+    <span class="eyebrow">Servicio</span>
+    <h1>{h1}</h1>
+    <p class="lead">{s.hero}</p>
+    <div class="cta-row"><a class="btn btn-amber" href={waLink(`Hola Multitainer, quiero ${s.nombre.toLowerCase()}.`)} target="_blank" rel="noopener">Cotizar este servicio →</a></div>
+  </div></section>
+
+  <section class="pad"><div class="wrap">
+    <div class="split">
+      <div class="prose">
+        {s.intro.map((p) => <p>{p}</p>)}
+        {s.bloques.map((b) => (
+          <>
+            <h2>{b.h2}</h2>
+            {b.parrafos?.map((p) => <p>{p}</p>)}
+            {b.lista && <ul>{b.lista.map((li) => <li>{li}</li>)}</ul>}
+          </>
+        ))}
+      </div>
+      <div class="media">
+        <img src={s.foto} alt={s.fotoAlt} loading="lazy" />
+        <ul class="ulist" style="margin-top:24px">
+          {s.destacados.map((d) => <li>{d}</li>)}
+        </ul>
+      </div>
+    </div>
+  </div></section>
+
+  {s.faqs.length > 0 && (
+    <section class="pad" style="padding-top:0"><div class="wrap">
+      <div class="head"><span class="eyebrow">Preguntas frecuentes</span><h2>Sobre {s.nombre.toLowerCase()}</h2></div>
+      <div class="faq">
+        {s.faqs.map((f) => (<details><summary>{f.q}</summary><p>{f.a}</p></details>))}
+      </div>
+    </div></section>
+  )}
+
+  <!-- interlink: otros servicios -->
+  <section class="pad zones" style="padding-bottom:64px"><div class="wrap">
+    <div class="head" style="margin-bottom:24px"><span class="eyebrow">Seguí explorando</span><h2>Otros servicios</h2></div>
+    <div class="svc">
+      {otros.map((o) => (
+        <a class="card" href={`/servicios/${o.slug}/`}>
+          <div class="ic"><svg viewBox="0 0 24 24" set:html={o.icon}></svg></div>
+          <h3>{o.nombre}</h3>
+          <p>{o.hero}</p>
+          <div class="arr">Ver {o.nombre.toLowerCase()} →</div>
+        </a>
+      ))}
+    </div>
+    <div class="chips" style="margin-top:34px">
+      {zonas.map((z) => <a class="chip" href={`/areas-de-servicio/${z.slug}/`}>{z.nombre}</a>)}
+    </div>
+  </div></section>
+
+  <section class="band">
+    <span class="eyebrow">Hablemos hoy</span>
+    <h2>Te cotizamos en 24 horas</h2>
+    <p>Contanos qué necesitás y te enviamos una propuesta con precio y plazo.</p>
+    <a class="btn btn-amber" href={waLink(`Hola Multitainer, quiero ${s.nombre.toLowerCase()}.`)} target="_blank" rel="noopener">Escribir por WhatsApp →</a>
+  </section>
+</Base>
