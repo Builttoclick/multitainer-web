@@ -43,12 +43,15 @@ export const nav = [
 export const waLink = (msg = 'Hola Multitainer, quiero una cotización.') =>
   `${site.whatsapp}?text=${encodeURIComponent(msg)}`;
 
-// Equipo (del sitio viejo). Iniciales para el avatar monograma.
+// Equipo (del sitio viejo).
+// `foto`: ruta a la headshot en /public/equipo/ (ej '/equipo/marco.jpg').
+//   Si está vacía, la tarjeta muestra el monograma de iniciales (`ini`) como fallback.
+//   Para activar fotos: dejá las imágenes en public/equipo/ con esos nombres.
 export const team = [
-  { nombre: 'Marco Kroker', rol: 'Director', ini: 'MK' },
-  { nombre: 'Raquel Leaño', rol: 'Gerente Administrativa y Financiera', ini: 'RL' },
-  { nombre: 'Noelia Olmedo', rol: 'Jefa de Taller', ini: 'NO' },
-  { nombre: 'Personal calificado', rol: 'Soldadores, pintores y choferes', ini: '+' },
+  { nombre: 'Marco Kroker', rol: 'Director', ini: 'MK', foto: '' },
+  { nombre: 'Raquel Leaño', rol: 'Gerente Administrativa y Financiera', ini: 'RL', foto: '' },
+  { nombre: 'Noelia Olmedo', rol: 'Jefa de Taller', ini: 'NO', foto: '' },
+  { nombre: 'Personal calificado', rol: 'Soldadores, pintores y choferes', ini: '+', foto: '' },
 ];
 
 // Equipo técnico propio (sin subcontratar)
