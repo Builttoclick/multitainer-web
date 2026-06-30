@@ -47,6 +47,28 @@ const porque = [
   { ic: '<circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 0 0-8 8c0 5.4 8 12 8 12s8-6.6 8-12a8 8 0 0 0-8-8Z"/>', t: 'Cobertura nacional', d: 'Con grúas propias entregamos e instalamos en todo el país, del Gran Asunción al Chaco.' },
 ];
 
+// Mito vs realidad (objeciones reales de los anuncios → prueba)
+const mitos = [
+  { m: 'Parece un depósito, una caja de metal.', r: 'Porcelanato, cielo raso, aire y luz LED. Mirá las obras y juzgá vos mismo.' },
+  { m: 'Hace frío en invierno y calor en verano.', r: 'Revestimiento térmico y aire acondicionado en todos los módulos.' },
+  { m: 'Nadie va a tomar en serio a mi empresa ahí.', r: '4 Pets, CONMEBOL y decenas de empresas ya operan desde un Multitainer.' },
+  { m: 'Es apretado, no entra nada.', r: 'Hasta 8 escritorios cómodos por contenedor, con baño. Y se amplía cuando crecés.' },
+  { m: 'Es caro.', r: 'Menos que una construcción tradicional, y listo en 28 días, no en 3 meses.' },
+  { m: 'Si algo se rompe, quedo solo.', r: 'Post-venta y garantía incluidos. Tu inversión dura décadas.' },
+];
+
+// Comparativa 28 días vs obra tradicional
+const tradicional = ['3+ meses de obra', 'Ruido, polvo y escombros por meses', 'Permisos y trámites de obra', 'Sorpresas en el presupuesto', 'Queda fijo: no se puede mover'];
+const multitainer = ['28 días, llave en mano', 'Se fabrica en planta, sin obra en tu predio', 'Sin permisos de obra complicados', 'Precio cerrado en la cotización de 24 h', 'Trasladable si tu empresa se muda'];
+
+// Garantía / por qué no ir con el más barato
+const garantias = [
+  { t: 'Materiales de primera', d: 'Nada de chapa fina ni atajos que se notan al año.' },
+  { t: 'Procesos certificados', d: 'Eléctrica y sanitaria ejecutadas como corresponde.' },
+  { t: 'Entrega a tiempo', d: 'El plazo que firmamos es el plazo que cumplimos.' },
+  { t: 'Post-venta incluido', d: 'Si algo necesita un ajuste, seguimos siendo nosotros.' },
+];
+
 const heroWords = ['Construimos', 'con', 'contenedores'];
 const desc = 'Multitainer construye con contenedores marítimos en Asunción y todo Paraguay: oficinas, obradores, vestuarios y showrooms llave en mano, con entrega e instalación en todo el país. Alquiler y venta de contenedores. Cotización en 24 horas.';
 ---
@@ -173,6 +195,23 @@ const desc = 'Multitainer construye con contenedores marítimos en Asunción y t
     </div>
   </div></section>
 
+  <!-- MITO VS REALIDAD -->
+  <section class="pad myth-sec"><div class="wrap">
+    <div class="head center reveal">
+      <span class="eyebrow">Lo que pensás… y la realidad</span>
+      <h2>El contenedor no es lo que creés</h2>
+      <p>Cada duda que tenés sobre un contenedor ya la escuchamos mil veces. Y todas tienen respuesta.</p>
+    </div>
+    <div class="myths">
+      {mitos.map((x, i) => (
+        <div class="myth reveal" style={`--d:${0.05 * (i % 3)}s`}>
+          <div class="myth-q"><span class="myth-x" aria-hidden="true">✕</span><span>“{x.m}”</span></div>
+          <div class="myth-a"><span class="myth-ok" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span>{x.r}</span></div>
+        </div>
+      ))}
+    </div>
+  </div></section>
+
   <!-- TIPOS DE ESPACIOS -->
   <section class="pad"><div class="wrap">
     <div class="head reveal">
@@ -209,6 +248,30 @@ const desc = 'Multitainer construye con contenedores marítimos en Asunción y t
     </div>
   </div></section>
 
+  <!-- 28 DÍAS VS OBRA TRADICIONAL -->
+  <section class="pad cmp-sec"><div class="wrap">
+    <div class="head center reveal">
+      <span class="eyebrow">Velocidad</span>
+      <h2>28 días. No tres meses.</h2>
+      <p>Lo que una obra tradicional tarda un trimestre en hacer, nosotros te lo entregamos en un mes.</p>
+    </div>
+    <div class="cmp">
+      <div class="cmp-col cmp-bad reveal">
+        <div class="cmp-h"><span class="cmp-tag">Obra tradicional</span><span class="cmp-time">3+ meses</span></div>
+        <ul>
+          {tradicional.map((t) => (<li><span class="cmp-x" aria-hidden="true">✕</span><span>{t}</span></li>))}
+        </ul>
+      </div>
+      <div class="cmp-col cmp-good reveal" style="--d:.08s">
+        <div class="cmp-h"><span class="cmp-tag">Con Multitainer</span><span class="cmp-time">28 días</span></div>
+        <ul>
+          {multitainer.map((t) => (<li><span class="cmp-ok" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span><span>{t}</span></li>))}
+        </ul>
+      </div>
+    </div>
+    <div class="cmp-cta reveal"><a class="btn btn-amber mag" href={waLink()} target="_blank" rel="noopener">Quiero mi cotización en 24 h →</a></div>
+  </div></section>
+
   <!-- POR QUÉ MULTITAINER -->
   <section class="pad why-sec"><div class="wrap">
     <div class="head reveal">
@@ -223,6 +286,27 @@ const desc = 'Multitainer construye con contenedores marítimos en Asunción y t
           <p>{w.d}</p>
         </div>
       ))}
+    </div>
+  </div></section>
+
+  <!-- GARANTÍA -->
+  <section class="pad gar-sec"><div class="wrap">
+    <div class="gar">
+      <div class="gar-copy reveal">
+        <span class="eyebrow">Garantía</span>
+        <h2>El más barato te sale caro</h2>
+        <p>Siempre va a aparecer alguien que cobra menos. Pero sin materiales de primera, sin procesos certificados y sin post-venta, cuando algo falla vas a estar solo.</p>
+        <blockquote class="gar-quote">“La calidad no es un gasto extra: es lo que te ahorra problemas y plata en el futuro.”</blockquote>
+        <div class="cta-row"><a class="btn btn-amber mag" href={waLink()} target="_blank" rel="noopener">Hablemos de tu proyecto →</a></div>
+      </div>
+      <ul class="gar-list reveal" style="--d:.1s">
+        {garantias.map((g) => (
+          <li>
+            <span class="gar-ok" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></span>
+            <div><b>{g.t}</b><span>{g.d}</span></div>
+          </li>
+        ))}
+      </ul>
     </div>
   </div></section>
 
@@ -405,6 +489,51 @@ const desc = 'Multitainer construye con contenedores marítimos en Asunción y t
   .plant-map iframe { width: 100%; height: 380px; border: 1px solid var(--line); border-radius: 6px; filter: grayscale(.2) invert(.92) hue-rotate(180deg) contrast(.9); }
   .map-ph { width: 100%; height: 380px; border: 1px dashed var(--line2); border-radius: 6px; display: flex; align-items: center; justify-content: center; color: #5a6170; }
 
+  /* ===== MITO VS REALIDAD ===== */
+  .myths { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .myth { background: var(--ink2); border: 1px solid var(--line); border-radius: 6px; padding: 24px 22px; transition: .2s; }
+  .myth:hover { border-color: var(--line2); transform: translateY(-4px); }
+  .myth-q { display: flex; gap: 11px; color: var(--mut); font-size: 15.5px; line-height: 1.5; padding-bottom: 15px; margin-bottom: 15px; border-bottom: 1px solid var(--line); }
+  .myth-q span:last-child { font-style: italic; }
+  .myth-x { flex: none; width: 22px; height: 22px; border-radius: 50%; background: rgba(255,255,255,.06); color: #7a818c; display: flex; align-items: center; justify-content: center; font-size: 11px; margin-top: 1px; }
+  .myth-a { display: flex; gap: 11px; color: #fff; font-size: 16px; line-height: 1.5; font-weight: 500; }
+  .myth-ok { flex: none; width: 22px; height: 22px; border-radius: 50%; background: rgba(237,180,63,.15); display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+  .myth-ok svg { width: 13px; height: 13px; fill: none; stroke: var(--amber); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* ===== COMPARATIVA 28 DÍAS ===== */
+  .cmp { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; }
+  .cmp-col { border-radius: 8px; padding: 28px 26px; }
+  .cmp-bad { background: var(--ink2); border: 1px solid var(--line); }
+  .cmp-good { background: linear-gradient(180deg, rgba(237,180,63,.09), rgba(237,180,63,.02)); border: 1.5px solid var(--amber); box-shadow: 0 20px 50px rgba(0,0,0,.35); }
+  .cmp-h { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding-bottom: 18px; margin-bottom: 18px; border-bottom: 1px solid var(--line); }
+  .cmp-good .cmp-h { border-color: rgba(237,180,63,.25); }
+  .cmp-tag { font-family: var(--h); font-weight: 800; text-transform: uppercase; letter-spacing: .04em; font-size: 14px; color: #fff; }
+  .cmp-time { font-family: var(--h); font-weight: 900; font-size: 26px; line-height: 1; }
+  .cmp-bad .cmp-time { color: var(--mut); }
+  .cmp-good .cmp-time { color: var(--amber); }
+  .cmp-col ul { list-style: none; display: flex; flex-direction: column; gap: 13px; }
+  .cmp-col li { display: flex; gap: 11px; font-size: 15.5px; line-height: 1.45; }
+  .cmp-bad li { color: var(--mut); }
+  .cmp-good li { color: #eef1f5; }
+  .cmp-x { flex: none; width: 20px; height: 20px; border-radius: 50%; background: rgba(255,255,255,.05); color: #6b727d; display: flex; align-items: center; justify-content: center; font-size: 10px; margin-top: 1px; }
+  .cmp-ok { flex: none; width: 20px; height: 20px; border-radius: 50%; background: rgba(237,180,63,.16); display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+  .cmp-ok svg { width: 12px; height: 12px; fill: none; stroke: var(--amber); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+  .cmp-cta { text-align: center; margin-top: 30px; }
+
+  /* ===== GARANTÍA ===== */
+  .gar-sec { background: var(--ink2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .gar { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+  .gar-copy h2 { font-size: clamp(28px, 4vw, 44px); color: #fff; margin: 14px 0 16px; }
+  .gar-copy > p { color: var(--mut); font-size: 16.5px; max-width: 470px; }
+  .gar-quote { margin: 22px 0 26px; padding-left: 18px; border-left: 3px solid var(--amber); font-family: var(--h); font-weight: 700; font-size: clamp(18px, 2.2vw, 22px); line-height: 1.35; color: #fff; text-transform: none; letter-spacing: 0; }
+  .gar-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+  .gar-list li { display: flex; gap: 14px; align-items: flex-start; background: var(--ink); border: 1px solid var(--line); border-radius: 6px; padding: 18px 20px; transition: .2s; }
+  .gar-list li:hover { border-color: var(--amber); transform: translateX(4px); }
+  .gar-ok { flex: none; width: 30px; height: 30px; border-radius: 7px; background: rgba(237,180,63,.15); display: flex; align-items: center; justify-content: center; }
+  .gar-ok svg { width: 17px; height: 17px; fill: none; stroke: var(--amber); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+  .gar-list b { display: block; font-family: var(--h); font-weight: 800; text-transform: uppercase; font-size: 14px; letter-spacing: .03em; color: #fff; margin-bottom: 3px; }
+  .gar-list div span { color: var(--mut); font-size: 14.5px; }
+
   /* ===== responsive ===== */
   @media (max-width: 900px) {
     .hero { min-height: auto; }
@@ -420,6 +549,9 @@ const desc = 'Multitainer construye con contenedores marítimos en Asunción y t
     .proc { grid-template-columns: 1fr 1fr; gap: 30px; }
     .proc-line { display: none; }
     .why { grid-template-columns: 1fr; }
+    .myths { grid-template-columns: 1fr 1fr; }
+    .gar { grid-template-columns: 1fr; gap: 32px; }
+    .gar-copy > p { max-width: none; }
     .plant { grid-template-columns: 1fr; gap: 26px; }
     .plant-map iframe { height: 300px; }
   }
@@ -429,6 +561,8 @@ const desc = 'Multitainer construye con contenedores marítimos en Asunción y t
     .proc { grid-template-columns: 1fr; }
     .plant-nap { grid-template-columns: 1fr; }
     .obras { grid-template-columns: 1fr 1fr; grid-auto-rows: 150px; }
+    .myths { grid-template-columns: 1fr; }
+    .cmp { grid-template-columns: 1fr; }
   }
   @media (prefers-reduced-motion: reduce) {
     .hero .bgwrap { animation: none; transform: none; }
