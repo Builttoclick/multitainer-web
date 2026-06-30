@@ -44,11 +44,11 @@ const porque = [
   { ic: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>', t: 'Cotización en 24 h', d: 'Respondemos rápido, con precio y plazo claros.' },
   { ic: '<rect x="3" y="3" width="18" height="18" rx="1"/><path d="M3 12h18M12 3v18"/>', t: 'Estructura reforzada', d: 'Unimos y apilamos contenedores hasta en dos plantas.' },
   { ic: '<path d="M12 2 4 6v6c0 5 3.4 8 8 10 4.6-2 8-5 8-10V6z"/>', t: '4 Pets · CONMEBOL', d: 'Marcas e instituciones ya confiaron en nosotros.' },
-  { ic: '<circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 0 0-8 8c0 5.4 8 12 8 12s8-6.6 8-12a8 8 0 0 0-8-8Z"/>', t: 'Todo el Gran Asunción', d: 'Entrega e instalación en las 9 zonas.' },
+  { ic: '<circle cx="12" cy="10" r="3"/><path d="M12 2a8 8 0 0 0-8 8c0 5.4 8 12 8 12s8-6.6 8-12a8 8 0 0 0-8-8Z"/>', t: 'Cobertura nacional', d: 'Con grúas propias entregamos e instalamos en todo el país, del Gran Asunción al Chaco.' },
 ];
 
 const heroWords = ['Construimos', 'con', 'contenedores'];
-const desc = 'Multitainer construye con contenedores marítimos en Asunción y Gran Asunción: oficinas, obradores, vestuarios y showrooms llave en mano, más alquiler y venta de contenedores. Cotización en 24 horas.';
+const desc = 'Multitainer construye con contenedores marítimos en Asunción y todo Paraguay: oficinas, obradores, vestuarios y showrooms llave en mano, con entrega e instalación en todo el país. Alquiler y venta de contenedores. Cotización en 24 horas.';
 ---
 <Base description={desc} image="/fotos/obras/schwartzmann-pileta.webp">
   <div class="scrollbar" id="sbar" aria-hidden="true"></div>
@@ -63,7 +63,7 @@ const desc = 'Multitainer construye con contenedores marítimos en Asunción y G
         <h1 class="hwrap">{heroWords.map((w, i) => (
           <span class="hw word" style={`--i:${i + 1}`}>{i === heroWords.length - 1 ? <b>{w}</b> : w}{' '}</span>
         ))}</h1>
-        <p class="hw" style="--i:4">Oficinas, obradores y espacios modulares llave en mano. Alquiler, venta y modificación de contenedores en Asunción y todo el Gran Asunción.</p>
+        <p class="hw" style="--i:4">Oficinas, obradores y espacios modulares llave en mano. Alquiler, venta y modificación de contenedores con entrega en todo el país.</p>
         <div class="cta-row hw" style="--i:5">
           <a class="btn btn-amber mag" href={waLink()} target="_blank" rel="noopener">Cotización en 24 h →</a>
           <a class="btn btn-ghost mag" href="#obras">Ver obras</a>
@@ -91,8 +91,8 @@ const desc = 'Multitainer construye con contenedores marítimos en Asunción y G
   <div class="stats"><div class="wrap">
     <div class="stat"><div class="n"><span data-count-to="24">0</span> h</div><div class="l">Cotización entregada</div></div>
     <div class="stat"><div class="n">Llave en mano</div><div class="l">Diseño + obra + entrega</div></div>
-    <div class="stat"><div class="n">20' y 40'</div><div class="l">Contenedores marítimos</div></div>
-    <div class="stat"><div class="n"><span data-count-to="9">0</span> zonas</div><div class="l">Gran Asunción</div></div>
+    <div class="stat"><div class="n"><span data-count-to="28">0</span> días</div><div class="l">Tu obra lista para usar</div></div>
+    <div class="stat"><div class="n">Todo el país</div><div class="l">Entrega e instalación nacional</div></div>
   </div></div>
 
   <!-- TICKER -->
@@ -249,9 +249,9 @@ const desc = 'Multitainer construye con contenedores marítimos en Asunción y G
   <!-- ZONAS -->
   <section class="pad zones" id="zonas"><div class="wrap">
     <div class="head reveal" style="margin-bottom:18px">
-      <span class="eyebrow">Áreas de servicio</span>
-      <h2>Asunción y todo el Gran Asunción</h2>
-      <p>Con base en Mariano Roque Alonso, llegamos a las 9 zonas del Gran Asunción.</p>
+      <span class="eyebrow">Cobertura nacional</span>
+      <h2>Entregamos en todo el Paraguay</h2>
+      <p>Con base en Mariano Roque Alonso y grúas propias, llevamos e instalamos tu módulo en cualquier punto del país — de Asunción al Chaco. Estas son algunas de las zonas donde más trabajamos:</p>
     </div>
     <div class="chips reveal">
       {zonas.map((z) => <a class="chip" href={`/areas-de-servicio/${z.slug}/`}>{z.nombre}</a>)}
