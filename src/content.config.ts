@@ -7,11 +7,13 @@ const proyectos = defineCollection({
     titulo: z.string(),
     // categoría del proyecto -> filtro en /proyectos + interlink al servicio
     categoria: z.enum([
+      'vivienda',
       'oficina',
       'obrador',
       'vestuario',
       'showroom',
       'campamento',
+      'evento',
       'bano',
       'dos-plantas',
     ]),

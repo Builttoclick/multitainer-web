@@ -4,8 +4,8 @@ import Base from '../../layouts/Base.astro';
 import { site, waLink } from '../../data/site';
 
 const CAT_LABEL: Record<string, string> = {
-  oficina: 'Oficinas', obrador: 'Obradores', vestuario: 'Vestuarios',
-  showroom: 'Showrooms', campamento: 'Campamentos', bano: 'Baños', 'dos-plantas': 'Dos plantas',
+  vivienda: 'Viviendas', oficina: 'Oficinas', obrador: 'Obradores', vestuario: 'Vestuarios',
+  showroom: 'Showrooms', campamento: 'Campamentos', evento: 'Eventos', bano: 'Baños', 'dos-plantas': 'Dos plantas',
 };
 
 const proyectos = (await getCollection('proyectos')).sort((a, b) => (a.data.orden ?? 0) - (b.data.orden ?? 0));
@@ -30,7 +30,7 @@ const itemList = {
     <div class="crumbs"><a href="/">Inicio</a><span>›</span>Proyectos</div>
     <span class="eyebrow">Portafolio</span>
     <h1>Obras que ya <b>entregamos</b></h1>
-    <p class="lead">Oficinas, obradores, vestuarios y showrooms en contenedores marítimos, para empresas y obras de todo el país.</p>
+    <p class="lead">Viviendas de lujo, oficinas, showrooms, campamentos y más, en contenedores marítimos, para familias y empresas de todo el país.</p>
   </div></section>
 
   <section class="pad"><div class="wrap">
