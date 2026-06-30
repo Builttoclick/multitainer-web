@@ -3,19 +3,39 @@ import Base from '../../layouts/Base.astro';
 import { site, waLink } from '../../data/site';
 import { servicios } from '../../data/servicios';
 import { zonas } from '../../data/zonas';
+import { departamentos } from '../../data/departamentos';
 
-const desc = 'Áreas de servicio de Multitainer: Mariano Roque Alonso, Asunción, San Lorenzo, Luque, Capiatá, Lambaré, Fernando de la Mora, Areguá y Villeta. Entrega e instalación de contenedores y módulos en todo el Gran Asunción.';
+const desc = 'Áreas de servicio de Multitainer: con base y planta en Mariano Roque Alonso, entregamos e instalamos contenedores y construcción modular en todo el Gran Asunción y en los departamentos del interior del Paraguay.';
 ---
-<Base title="Áreas de servicio" titleTail="contenedores y construcción modular en todo el Gran Asunción" description={desc}>
+<Base title="Áreas de servicio" titleTail="contenedores y construcción modular en todo Paraguay" description={desc}>
   <section class="phero"><div class="wrap">
     <div class="crumbs"><a href="/">Inicio</a><span>›</span>Áreas de servicio</div>
     <span class="eyebrow">Dónde trabajamos</span>
-    <h1>Asunción y todo el <b>Gran Asunción</b></h1>
-    <p class="lead">Con base y planta en Mariano Roque Alonso, entregamos e instalamos contenedores y módulos en las 9 zonas del Gran Asunción.</p>
+    <h1>Contenedores y módulos en todo el <b>Paraguay</b></h1>
+    <p class="lead">Con base y planta en Mariano Roque Alonso, entregamos e instalamos contenedores y construcción modular en todo el Gran Asunción y en los departamentos del interior.</p>
     <div class="cta-row"><a class="btn btn-amber" href={waLink()} target="_blank" rel="noopener">Cotización en 24 h →</a></div>
   </div></section>
 
-  <section class="pad"><div class="wrap">
+  {departamentos.length > 0 && (
+    <section class="pad"><div class="wrap">
+      <div class="head" style="margin-bottom:24px"><span class="eyebrow">Cobertura nacional</span><h2>Departamentos</h2></div>
+      <div class="pgrid">
+        {departamentos.map((d) => (
+          <a class="pcard" href={`/areas-de-servicio/${d.slug}/`}>
+            <div class="body">
+              <div class="cat">Departamento</div>
+              <h3>{d.nombre}</h3>
+              <p>{d.hero}</p>
+              <div class="arr" style="margin-top:14px;font-family:var(--h);font-weight:800;text-transform:uppercase;font-size:13px;letter-spacing:.06em;color:var(--amber)">Ver {d.nombre} →</div>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div></section>
+  )}
+
+  <section class="pad" style="padding-top:0"><div class="wrap">
+    <div class="head" style="margin-bottom:24px"><span class="eyebrow">Gran Asunción</span><h2>Nuestra zona de entrega más rápida</h2></div>
     <div class="pgrid">
       {zonas.map((z) => (
         <a class="pcard" href={`/areas-de-servicio/${z.slug}/`}>

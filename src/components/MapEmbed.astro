@@ -1,0 +1,32 @@
+---
+// Mapa de Google embebido (sin API key) para las area pages.
+// Geocodifica `query` (ej "Encarnación, Itapúa, Paraguay"). Lazy-load.
+interface Props { query: string; zoom?: number; title: string; }
+const { query, zoom = 14, title } = Astro.props;
+const src = `https://maps.google.com/maps?q=${encodeURIComponent(query)}&z=${zoom}&output=embed`;
+---
+<div class="mapwrap">
+  <iframe
+    src={src}
+    title={`Mapa de ${title}`}
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+    allowfullscreen></iframe>
+</div>
+<style>
+  .mapwrap {
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.03);
+  }
+  .mapwrap iframe {
+    display: block;
+    width: 100%;
+    height: 360px;
+    border: 0;
+  }
+  @media (max-width: 640px) {
+    .mapwrap iframe { height: 280px; }
+  }
+</style>

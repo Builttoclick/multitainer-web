@@ -15,6 +15,7 @@ export default defineConfig({
         const u = item.url;
         if (u === 'https://multitainer.com.py/') item.priority = 1.0;
         else if (/\/(servicios|proyectos)\/$/.test(u)) item.priority = 0.9;
+        else if (/\/areas-de-servicio\/[^/]+\/[^/]+\/$/.test(u)) item.priority = 0.8;
         else if (/\/(servicios|proyectos|areas-de-servicio)\/[^/]+\/$/.test(u)) item.priority = 0.8;
         else if (/\/(sobre-nosotros|contacto|areas-de-servicio)\/$/.test(u)) item.priority = 0.6;
         return item;
