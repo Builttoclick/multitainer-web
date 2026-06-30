@@ -30,7 +30,7 @@ const fullTitle = title === site.name
 const canonical = new URL(Astro.url.pathname, site.url).href;
 const ogImage = new URL(image, site.url).href;
 
-// LocalBusiness / GeneralContractor — NAP canónico
+// LocalBusiness / GeneralContractor - NAP canónico
 const negocio = {
   '@context': 'https://schema.org',
   '@type': 'GeneralContractor',
@@ -105,7 +105,7 @@ const allSchema = [negocio, ...(breadcrumb ? [breadcrumb] : []), ...extra];
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Multitainer — construcción modular en contenedores" />
+    <meta property="og:image:alt" content="Multitainer - construcción modular en contenedores" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={fullTitle} />
     <meta name="twitter:description" content={description} />

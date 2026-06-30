@@ -1,7 +1,7 @@
 ---
 titulo: "Casa de dos plantas en contenedor"
 categoria: "vivienda"
-zona: "Gran Asunción"
+zona: "Luque"
 medida: "Contenedores apilados"
 resumen: "Vivienda de dos plantas en contenedores marítimos, con revestimiento de piedra, escalera de hormigón, carport y palmeras."
 anio: 2023
@@ -9,7 +9,7 @@ estado: "Terminado"
 destacado: true
 orden: 3
 portada: "/fotos/proyectos/casa-dos-plantas/casa-contenedor-dos-plantas-gris-piedra-palmeras__003.webp"
-portada_alt: "Casa de dos plantas en contenedor — Multitainer"
+portada_alt: "Casa de dos plantas en contenedor, Multitainer"
 destacados:
   - "Dos plantas sobre base de hormigón"
   - "Revestimiento de piedra"
@@ -26,8 +26,19 @@ galeria:
     alt: "Casa de lujo gris de dos plantas en contenedor, toma en contrapicado de la escalera de hormigon y la palmera."
   - src: "/fotos/proyectos/casa-dos-plantas/casa-contenedor-dos-plantas-negra-carport__007.webp"
     alt: "Casa de dos plantas en contenedor maritimo negro con carport, escalera lateral de hormigon y palmera, sobre explanada de ripio."
+faqs:
+  - pregunta: "¿Es seguro hacer dos plantas con contenedores?"
+    respuesta: "Sí. El contenedor está diseñado para apilarse y soportar carga, por eso es una base ideal para construir en altura. Nuestros ingenieros calculan y refuerzan cada proyecto."
+  - pregunta: "¿Qué incluye el llave en mano?"
+    respuesta: "Revestimiento térmico, instalación eléctrica certificada, sanitaria completa, pisos terminados, ventanas, puertas, aire acondicionado y acabados. Lo recibís listo para usar."
+  - pregunta: "¿En cuánto tiempo me dan una cotización?"
+    respuesta: "En 24 horas. Nos contás qué necesitás y al día hábil siguiente tenés una propuesta con precio y plazo cerrados, sin sorpresas."
+  - pregunta: "¿Puedo combinar contenedores con mampostería?"
+    respuesta: "Sí, como en esta casa: contenedores, base de hormigón y revestimiento de piedra conviven sin problema y mejoran el resultado."
 metaTitle: "Casa de dos plantas en contenedor"
 metaDescription: "Vivienda de dos plantas en contenedores marítimos, con revestimiento de piedra, escalera de hormigón, carport y palmeras."
 ---
 
-Vivienda de dos plantas en contenedores marítimos, con revestimiento de piedra, escalera de hormigón, carport y palmeras. Construido por Multitainer con contenedores marítimos, con entrega e instalación en Asunción y todo el Paraguay.
+Apilar contenedores permite ganar metros sin ocupar más terreno. Esta casa de dos plantas combina los contenedores con una base de hormigón, revestimiento de piedra y un carport, para un resultado sólido y de líneas modernas.
+
+La estructura del contenedor es naturalmente apta para apilarse, así que sumar una segunda planta es más simple y rápido que en la construcción tradicional. Todo llave en mano y ejecutado por nuestro equipo.

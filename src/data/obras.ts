@@ -1,4 +1,4 @@
-// AUTO-GENERADO por reanalisis/prep_web.py — galeria curada de obras (home)
+// AUTO-GENERADO por reanalisis/prep_web.py - galeria curada de obras (home)
 export interface Obra { src: string; thumb: string; lqip: string; w: number; h: number; label: string; cat: string; span: string; }
 export const obras: Obra[] = [
   {

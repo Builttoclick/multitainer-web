@@ -7,7 +7,7 @@ import { obras } from '../data/obras';
 
 // Reel de anuncios (videos servidos desde Cloudflare R2)
 const R2 = 'https://media.multitainer.com.py';
-// Video del hero — Anuncio 1 "manejo de objeciones" (vertical 9:16, click para reproducir)
+// Video del hero - Anuncio 1 "manejo de objeciones" (vertical 9:16, click para reproducir)
 const heroReel = { src: `${R2}/anuncios/anuncio-1.mp4`, poster: `${R2}/anuncios/poster-1.webp`, dur: '1:27' };
 const reels = [
   { src: `${R2}/anuncios/anuncio-3.mp4`, poster: `${R2}/anuncios/poster-3.webp`, tag: 'Oficina en un contenedor', sub: '“Vamos a ser sinceros…”', dur: '0:47' },
@@ -71,8 +71,26 @@ const garantias = [
 
 const heroWords = ['Construimos', 'con', 'contenedores'];
 const desc = 'Multitainer construye con contenedores marítimos en Asunción y todo Paraguay: oficinas, obradores, vestuarios y showrooms llave en mano, con entrega e instalación en todo el país. Alquiler y venta de contenedores. Cotización en 24 horas.';
+
+// FAQ de la home (reales) + schema para rich results
+const homeFaqs = [
+  { q: '¿Qué se puede construir con contenedores marítimos?', a: 'Casas, oficinas, obradores, vestuarios, showrooms, campamentos, depósitos y baños. Desde un módulo compacto hasta proyectos de varios contenedores combinados o de dos plantas, todo llave en mano.' },
+  { q: '¿En cuánto tiempo entregan un proyecto?', a: 'La cotización la tenés en 24 horas. Una oficina llave en mano suele estar lista en alrededor de 28 días, y el alquiler de módulos equipados se entrega en 1 a 2 días hábiles.' },
+  { q: '¿Una casa u oficina de contenedor es cómoda en verano e invierno?', a: 'Sí. Ponemos revestimiento térmico en paredes y techo y aire acondicionado en los ambientes, así el interior se mantiene confortable todo el año.' },
+  { q: '¿Entregan e instalan en el interior del país?', a: 'Sí. Tenemos grúas y vehículos propios y cobertura nacional real: entregamos e instalamos en todo Paraguay, del Gran Asunción al Chaco. El traslado se detalla en la cotización.' },
+  { q: '¿Qué incluye el llave en mano?', a: 'Revestimiento térmico, instalación eléctrica certificada, sanitaria completa, pisos terminados, ventanas, puertas, aire acondicionado y acabados exteriores. Lo recibís listo para usar.' },
+  { q: '¿Es más barato que una construcción tradicional?', a: 'En general sí, y sobre todo es más rápido y predecible: precio cerrado en la cotización de 24 horas y entrega en alrededor de 28 días en lugar de varios meses de obra.' },
+  { q: '¿Puedo ver un contenedor terminado antes de encargar?', a: 'Sí. Tenemos showroom y planta en Mariano Roque Alonso. Coordinás una visita y ves en vivo las terminaciones y proyectos terminados.' },
+  { q: '¿Venden o alquilan contenedores sin modificar?', a: 'Sí. Vendemos contenedores usados de 20 y 40 pies verificados, y alquilamos módulos equipados listos para usar. Si después querés modificarlo, lo hace el mismo equipo.' },
+  { q: '¿Se puede trasladar o ampliar el módulo después?', a: 'Sí. Se levanta con grúa y se reinstala en otro predio, y se amplía sumando más contenedores sin tocar lo ya construido.' },
+];
+const homeFaqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: homeFaqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+};
 ---
-<Base description={desc} image="/fotos/obras/casa-lujo-pileta.webp">
+<Base description={desc} image="/fotos/obras/casa-lujo-pileta.webp" schema={[homeFaqSchema]}>
   <div class="scrollbar" id="sbar" aria-hidden="true"></div>
 
   <!-- HERO -->
@@ -159,7 +177,7 @@ const desc = 'Multitainer construye con contenedores marítimos en Asunción y t
           style={`--d:${0.04 * (i % 4)}s; background-image:url(${o.lqip})`}
           data-i={i} data-full={o.src} data-label={o.label}
           aria-label={`Ampliar foto: ${o.label}`}>
-          <img class="media" src={o.thumb} alt={`${o.label} — obra de Multitainer en contenedor`} loading="lazy" decoding="async" width={o.w} height={o.h} onload="this.closest('.bup').classList.add('is-loaded')" />
+          <img class="media" src={o.thumb} alt={`${o.label} - obra de Multitainer en contenedor`} loading="lazy" decoding="async" width={o.w} height={o.h} onload="this.closest('.bup').classList.add('is-loaded')" />
           <span class="ov"></span>
           <span class="cat">{o.cat}</span>
           <span class="lbl">{o.label}</span>
@@ -222,7 +240,7 @@ const desc = 'Multitainer construye con contenedores marítimos en Asunción y t
     <div class="uses">
       {usos.map((u, i) => (
         <a class="use reveal" style={`--d:${0.04 * (i % 4)}s`} href={u.href}>
-          <img src={`/fotos/${u.img}`} alt={`${u.t} en contenedor — Multitainer`} loading="lazy" />
+          <img src={`/fotos/${u.img}`} alt={`${u.t} en contenedor - Multitainer`} loading="lazy" />
           <span class="use-ov"></span>
           <span class="use-t">{u.t}</span>
         </a>
@@ -321,7 +339,7 @@ const desc = 'Multitainer construye con contenedores marítimos en Asunción y t
       {team.map((m, i) => (
         <div class="team-card reveal" style={`--d:${0.05 * i}s`}>
           {m.foto
-            ? <div class="team-av"><img src={m.foto} alt={`${m.nombre} — ${m.rol}, Multitainer`} loading="lazy" width="66" height="66" /></div>
+            ? <div class="team-av"><img src={m.foto} alt={`${m.nombre} - ${m.rol}, Multitainer`} loading="lazy" width="66" height="66" /></div>
             : <div class="team-av">{m.ini}</div>}
           <h4>{m.nombre}</h4>
           <div class="rol">{m.rol}</div>
@@ -335,7 +353,7 @@ const desc = 'Multitainer construye con contenedores marítimos en Asunción y t
     <div class="head reveal" style="margin-bottom:18px">
       <span class="eyebrow">Cobertura nacional</span>
       <h2>Entregamos en todo el Paraguay</h2>
-      <p>Con base en Mariano Roque Alonso y grúas propias, llevamos e instalamos tu módulo en cualquier punto del país — de Asunción al Chaco. Estas son algunas de las zonas donde más trabajamos:</p>
+      <p>Con base en Mariano Roque Alonso y grúas propias, llevamos e instalamos tu módulo en cualquier punto del país - de Asunción al Chaco. Estas son algunas de las zonas donde más trabajamos:</p>
     </div>
     <div class="chips reveal">
       {zonas.map((z) => <a class="chip" href={`/areas-de-servicio/${z.slug}/`}>{z.nombre}</a>)}
@@ -364,6 +382,14 @@ const desc = 'Multitainer construye con contenedores marítimos en Asunción y t
     </div>
   </div></section>
 
+  <!-- FAQ -->
+  <section class="pad" id="faq" style="padding-top:0"><div class="wrap">
+    <div class="head"><span class="eyebrow">Preguntas frecuentes</span><h2>Lo que más nos preguntan</h2></div>
+    <div class="faq">
+      {homeFaqs.map((f) => (<details><summary>{f.q}</summary><p>{f.a}</p></details>))}
+    </div>
+  </div></section>
+
   <!-- CTA -->
   <section class="band" id="cta">
     <span class="eyebrow">Hablemos hoy</span>
@@ -387,7 +413,7 @@ const desc = 'Multitainer construye con contenedores marítimos en Asunción y t
   .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: clamp(28px, 4.5vw, 64px); align-items: center; padding: 96px 0 84px; }
   .hero-copy { max-width: 640px; min-width: 0; }
   .hero-video { justify-self: end; }
-  /* tarjeta de video del hero — reusa el componente .reel, con marco premium */
+  /* tarjeta de video del hero - reusa el componente .reel, con marco premium */
   .hv-reel { width: clamp(250px, 26vw, 336px); box-shadow: 0 34px 80px rgba(0,0,0,.62); border-color: rgba(237,180,63,.4); }
   .hero h1 { font-size: clamp(32px, 6.4vw, 74px); color: #fff; margin: 18px 0 0; text-shadow: 0 2px 30px rgba(0,0,0,.45); overflow-wrap: break-word; }
   .hero h1 b { color: var(--amber); }

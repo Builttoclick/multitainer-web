@@ -3,13 +3,13 @@ titulo: "Casa de lujo en contenedor con pileta"
 categoria: "vivienda"
 zona: "Gran Asunción"
 medida: "Varios contenedores"
-resumen: "Vivienda premium construida con contenedores marítimos: un pabellón de vidrio piso a techo, cocina con isla, galería de porcelanato y pileta integrada al jardín."
+resumen: "Vivienda premium en contenedores marítimos: un pabellón de vidrio piso a techo, cocina con isla, galería de porcelanato y pileta integrada al jardín."
 anio: 2024
 estado: "Terminado"
 destacado: true
 orden: 1
 portada: "/fotos/proyectos/casa-lujo-pabellon-vidrio/casa-contenedor-lujo-pileta-atardecer-pabellon-vidrio__058.webp"
-portada_alt: "Casa de lujo en contenedor con pileta — Multitainer"
+portada_alt: "Casa de lujo en contenedor con pileta, Multitainer"
 destacados:
   - "Paredes de vidrio piso a techo"
   - "Pileta integrada al jardín"
@@ -30,8 +30,21 @@ galeria:
     alt: "Living de la casa de lujo en pabellon de contenedor negro: sofa seccional gris, paredes de vidrio piso-techo, comedor de sillas wishbone y vista a la pileta del jardin."
   - src: "/fotos/proyectos/casa-lujo-pabellon-vidrio/bano-casa-contenedor-microcemento-nichos-bacha-apoyo__104.webp"
     alt: "Bano de casa de contenedor con paredes de microcemento, nichos embutidos, inodoro y bacha de apoyo sobre vanitory de madera."
+faqs:
+  - pregunta: "¿Se puede hacer una casa de lujo de verdad con contenedores?"
+    respuesta: "Sí. Esta vivienda lo demuestra: pabellón de vidrio, pileta y terminaciones premium. Bien ejecutada, una casa de contenedor es tan confortable y durable como una construcción tradicional, y se hace en menos tiempo."
+  - pregunta: "¿Una casa de contenedor es fresca en verano?"
+    respuesta: "Sí. Ponemos revestimiento térmico en paredes y techo, y aire acondicionado en los ambientes. El interior se mantiene confortable todo el año."
+  - pregunta: "¿Qué incluye el llave en mano?"
+    respuesta: "Revestimiento térmico, instalación eléctrica certificada, sanitaria completa, pisos terminados, ventanas, puertas, aire acondicionado y acabados. Lo recibís listo para usar."
+  - pregunta: "¿Cuánto cuesta una casa así?"
+    respuesta: "Depende del tamaño y las terminaciones. Lo definimos en la cotización, que te entregamos en 24 horas con precio y plazo cerrados."
+  - pregunta: "¿Se puede ampliar más adelante?"
+    respuesta: "Sí. La construcción modular permite sumar más contenedores o ambientes sin tocar lo ya construido."
 metaTitle: "Casa de lujo en contenedor con pileta"
-metaDescription: "Vivienda premium construida con contenedores marítimos: un pabellón de vidrio piso a techo, cocina con isla, galería de porcelanato y pileta integrada"
+metaDescription: "Vivienda premium en contenedores marítimos: un pabellón de vidrio piso a techo, cocina con isla, galería de porcelanato y pileta integrada al jardín."
 ---
 
-Vivienda premium construida con contenedores marítimos: un pabellón de vidrio piso a techo, cocina con isla, galería de porcelanato y pileta integrada al jardín. Construido por Multitainer con contenedores marítimos, con entrega e instalación en Asunción y todo el Paraguay.
+Esta casa demuestra hasta dónde llega la construcción con contenedores cuando se hace bien. El corazón del proyecto es un pabellón de vidrio que conecta el living, el comedor y la cocina con el jardín y la pileta, mientras los contenedores quedan a la vista como parte del diseño.
+
+Todo es llave en mano: estructura, revestimiento térmico, eléctrica, sanitaria, porcelanato, aberturas de aluminio y aire acondicionado, ejecutado por nuestro equipo. El resultado es una vivienda de lujo, durable y con una identidad que una construcción tradicional difícilmente logra.

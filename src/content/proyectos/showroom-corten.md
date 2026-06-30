@@ -1,16 +1,16 @@
 ---
 titulo: "Showroom corten en contenedor"
 categoria: "showroom"
-zona: "Gran Asunción"
+zona: "Mariano Roque Alonso"
 medida: "Contenedor de 40 pies"
 cliente: "Multitainer"
-resumen: "Módulo showroom en contenedor con terminación corten cobrizo, aberturas de aluminio negro y puertas de vidrio: el demostrador que tenemos en el taller."
+resumen: "Módulo showroom en contenedor con terminación corten cobrizo, aberturas de aluminio negro y puertas de vidrio. Es el demostrador que tenemos en el taller."
 anio: 2024
 estado: "Terminado"
 destacado: false
 orden: 9
 portada: "/fotos/proyectos/showroom-corten/modulo-corten-marron-frente-puerta-vidrio__030.webp"
-portada_alt: "Showroom corten en contenedor — Multitainer"
+portada_alt: "Showroom corten en contenedor, Multitainer"
 destacados:
   - "Terminación corten cobrizo"
   - "Aberturas de aluminio negro"
@@ -33,8 +33,19 @@ galeria:
     alt: "Casa de contenedor corten marron con puerta corrediza de vidrio abierta y ventana, en entorno rural con campo verde."
   - src: "/fotos/proyectos/showroom-corten/modulo-corten-marron-postigos-abiertos-puerta-vidrio__053.webp"
     alt: "Modulo de contenedor corten marron con postigos rebatibles abiertos y puerta corrediza de vidrio, en predio de tierra."
+faqs:
+  - pregunta: "¿Puedo ir a ver un contenedor terminado antes de encargar?"
+    respuesta: "Sí. Tenemos este showroom en nuestra planta de Mariano Roque Alonso. Coordinás una visita y ves en vivo las terminaciones y proyectos en planta."
+  - pregunta: "¿Qué es la terminación corten?"
+    respuesta: "Es un acabado color cobrizo, tipo acero oxidado controlado, muy buscado para fachadas con personalidad. Lo aplicamos sobre el contenedor según el diseño que quieras."
+  - pregunta: "¿En cuánto tiempo me dan una cotización?"
+    respuesta: "En 24 horas. Nos contás qué necesitás y al día hábil siguiente tenés una propuesta con precio y plazo cerrados, sin sorpresas."
+  - pregunta: "¿Quién hace el trabajo?"
+    respuesta: "Equipo técnico propio de Multitainer: arquitectos, ingenieros, soldadores, electricistas, plomeros y especialistas en terminaciones. No subcontratamos, así controlamos la calidad de principio a fin."
 metaTitle: "Showroom corten en contenedor"
-metaDescription: "Módulo showroom en contenedor con terminación corten cobrizo, aberturas de aluminio negro y puertas de vidrio: el demostrador que tenemos en el taller"
+metaDescription: "Módulo showroom en contenedor con terminación corten cobrizo, aberturas de aluminio negro y puertas de vidrio. Es el demostrador que tenemos en el taller."
 ---
 
-Módulo showroom en contenedor con terminación corten cobrizo, aberturas de aluminio negro y puertas de vidrio: el demostrador que tenemos en el taller. Construido por Multitainer con contenedores marítimos, con entrega e instalación en Asunción y todo el Paraguay.
+Este es nuestro propio showroom en el taller de Mariano Roque Alonso. Lo usamos para que los clientes vean y toquen en vivo un contenedor terminado: la chapa corten cobrizo, las aberturas de aluminio negro, los postigos y las puertas de vidrio.
+
+Si estás evaluando un proyecto, venir a verlo en persona es la mejor manera de entender la calidad de las terminaciones. Coordinás una visita y te lo mostramos.

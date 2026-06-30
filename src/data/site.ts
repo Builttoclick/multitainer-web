@@ -1,7 +1,7 @@
-// Datos centrales del negocio — fuente única de verdad para NAP, links y schema.
+// Datos centrales del negocio - fuente única de verdad para NAP, links y schema.
 // NAP canónico (idéntico en header/footer/schema):
 // Multitainer · Gral. Patricio Escobar c/ Gral. J. M. Bruguez, Mariano Roque Alonso 111008
-// · (021) 753 900 · recepcion@multitainer.com.py · Lun–Vie 07:00–17:30
+// · (021) 753 900 · recepcion@multitainer.com.py · Lun-Vie 07:00-17:30
 export const site = {
   name: 'MULTITAINER',
   legalName: 'Multitainer S.A.',
@@ -21,7 +21,7 @@ export const site = {
   whatsappIntl: '595981223938',
   whatsapp: 'https://wa.me/595981223938',
   email: 'recepcion@multitainer.com.py',
-  hours: 'Lun–Vie 07:00–17:30',
+  hours: 'Lun-Vie 07:00-17:30',
   // redes reales (del sitio viejo)
   facebook: 'https://www.facebook.com/multitainer',
   instagram: 'https://www.instagram.com/multitainersa',

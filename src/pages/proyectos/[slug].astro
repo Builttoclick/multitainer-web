@@ -18,12 +18,22 @@ const CAT_LABEL: Record<string, string> = {
 };
 // link de vuelta a la zona si coincide con una de las 9
 const zonaMatch = zonas.find((z) => z.nombre.toLowerCase() === (d.zona ?? '').toLowerCase());
+
+const faqSchema = d.faqs.length ? {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: d.faqs.map((f) => ({
+    '@type': 'Question', name: f.pregunta,
+    acceptedAnswer: { '@type': 'Answer', text: f.respuesta },
+  })),
+} : null;
 ---
 <Base
   title={d.metaTitle ?? d.titulo}
   titleTail={`proyecto en contenedor · ${CAT_LABEL[d.categoria] ?? d.categoria}`}
   description={d.metaDescription ?? d.resumen}
   image={d.portada}
+  schema={faqSchema ? [faqSchema] : undefined}
 >
   <section class="phero"><div class="wrap">
     <div class="crumbs"><a href="/">Inicio</a><span>›</span><a href="/proyectos/">Proyectos</a><span>›</span>{d.titulo}</div>

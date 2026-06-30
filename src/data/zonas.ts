@@ -1,4 +1,4 @@
-// Las 9 zonas de Local SEO. Slugs PRESERVADOS del sitio viejo (rankean) — NO cambiar.
+// Las 9 zonas de Local SEO. Slugs PRESERVADOS del sitio viejo (rankean) - NO cambiar.
 // Copy a nivel borrador/placeholder: profundidad final en el pass de authority-pages.
 export interface FaqZ { q: string; a: string; }
 export interface Zona {

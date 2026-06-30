@@ -1,24 +1,36 @@
 ---
-titulo: "Obrador para obra en contenedor"
+titulo: "Obrador instalado en obra"
 categoria: "obrador"
-zona: "Gran Asunción"
-medida: "40 pies"
-resumen: "Obrador completo en contenedor de 40 pies con varias habitaciones y depósito, entregado e instalado en obra."
-anio: 2025
+zona: "Central"
+medida: "Módulos"
+resumen: "Obrador en contenedor instalado a pie de obra: oficina, depósito y baño, equipado y trasladable cuando la obra termina."
+anio: 2023
 estado: "Terminado"
 destacado: false
-orden: 5
-portada: "/fotos/proyectos/obrador-instalado.jpg"
-portada_alt: "Obrador en contenedor de 40 pies instalado en obra — Multitainer"
+orden: 24
+portada: "/fotos/obrador-instalado.jpg"
+portada_alt: "Obrador instalado en obra, Multitainer"
 destacados:
-  - "Varias habitaciones y depósito"
-  - "Entregado e instalado en obra"
-  - "Listo para usar desde el primer día"
+  - "Oficina, depósito y baño"
+  - "Equipado y resistente"
+  - "Instalado a pie de obra"
+  - "Trasladable a la próxima obra"
+galeria:
+  - src: "/fotos/exterior-obrador.jpg"
+    alt: "Obrador en contenedor instalado en obra"
 faqs:
-  - pregunta: "¿Qué incluye un obrador en contenedor?"
-    respuesta: "Según el proyecto: oficina, habitaciones, depósito, baño e instalación eléctrica, todo dentro del contenedor y listo para usar."
-metaTitle: "Obrador en contenedor para obra"
-metaDescription: "Obrador completo en contenedor de 40 pies con habitaciones y depósito, instalado en obra por Multitainer."
+  - pregunta: "¿Entregan obradores listos para usar?"
+    respuesta: "Sí. Llegan instalados a pie de obra, con oficina, depósito y baño equipados. Tu equipo trabaja desde el primer día."
+  - pregunta: "¿Se traslada el obrador a la próxima obra?"
+    respuesta: "Sí. Se levanta con nuestras grúas y se reinstala donde lo necesites. Es reutilizable obra tras obra."
+  - pregunta: "¿Entregan en el interior del país?"
+    respuesta: "Sí. Tenemos grúas y vehículos propios y entregamos e instalamos en todo Paraguay, no solo en Gran Asunción. El traslado se detalla en la cotización según la distancia."
+  - pregunta: "¿En cuánto tiempo me dan una cotización?"
+    respuesta: "En 24 horas. Nos contás qué necesitás y al día hábil siguiente tenés una propuesta con precio y plazo cerrados, sin sorpresas."
+metaTitle: "Obrador instalado en obra"
+metaDescription: "Obrador en contenedor instalado a pie de obra: oficina, depósito y baño, equipado y trasladable cuando la obra termina."
 ---
 
-Placeholder. Proyecto de obrador: necesidad de la obra, distribución y resultado. Reemplazar con el detalle real.
+El obrador es uno de los pedidos más frecuentes de constructoras. Lo entregamos instalado a pie de obra, con oficina, depósito y baño, equipado y listo para arrancar, sin perder tiempo en construir una casilla.
+
+Cuando la obra termina, se levanta con grúa y se traslada al siguiente proyecto. Una inversión que sirve obra tras obra.

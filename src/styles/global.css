@@ -1,5 +1,5 @@
 /* ===========================================================================
-   MULTITAINER — Design system "Acero" (oscuro industrial)
+   MULTITAINER - Design system "Acero" (oscuro industrial)
    Fuente: rebuild/proposals/opcion-1-acero.html (línea elegida por Marco)
    =========================================================================== */
 :root {
@@ -275,7 +275,7 @@ footer.ft a:hover { color: var(--amber); }
 }
 
 /* ===========================================================================
-   v2 — blur-up (LQIP), lightbox, magnetic buttons  (GLOBAL: usados por JS)
+   v2 - blur-up (LQIP), lightbox, magnetic buttons  (GLOBAL: usados por JS)
    =========================================================================== */
 
 /* blur-up: imagen nítida sobre placeholder borroso (data-uri en background) */

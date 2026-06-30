@@ -1,19 +1,19 @@
 ---
 titulo: "Casa de lujo con celosía de ladrillo"
 categoria: "vivienda"
-zona: "Gran Asunción"
+zona: "San Bernardino"
 medida: "Varios contenedores"
-resumen: "Casa de diseño en contenedores con muros de celosía de ladrillo rojo, techo mariposa y dormitorios editoriales que abren a patios con enredaderas."
+resumen: "Casa de diseño en contenedores con muros de celosía de ladrillo, techo mariposa y dormitorios que abren a patios con enredaderas."
 anio: 2024
 estado: "Terminado"
 destacado: true
 orden: 2
 portada: "/fotos/proyectos/posada-celosia-ladrillo/casa-contenedor-negra-celosia-ladrillo-atardecer-iluminada__069.webp"
-portada_alt: "Casa de lujo con celosía de ladrillo — Multitainer"
+portada_alt: "Casa de lujo con celosía de ladrillo, Multitainer"
 destacados:
   - "Celosía de ladrillo calado"
   - "Techo mariposa y microcemento"
-  - "Dormitorios de diseño con vidrio piso a techo"
+  - "Dormitorios con vidrio piso a techo"
   - "Iluminación arquitectónica nocturna"
 galeria:
   - src: "/fotos/proyectos/posada-celosia-ladrillo/casa-contenedor-negra-celosia-ladrillo-entrada-madera__061.webp"
@@ -32,8 +32,21 @@ galeria:
     alt: "Dormitorio de huespedes editorial en casa de contenedor con dos camas individuales, comoda blanca, cuadros y pared de vidrio a la terraza, piso de madera."
   - src: "/fotos/proyectos/posada-celosia-ladrillo/dormitorio-huespedes-casa-contenedor-dos-camas-cabeceras-azules-balance__148.webp"
     alt: "Dormitorio de huespedes editorial en casa de contenedor con dos camas, cabeceras tapizadas azules y almohadones 'Balance', salida a la terraza. Estilo posada."
+faqs:
+  - pregunta: "¿Sirve la construcción con contenedores para una casa de descanso o posada?"
+    respuesta: "Sí, es ideal: se construye rápido, se traslada e instala en el terreno y permite diseños como este, con celosías de ladrillo y mucha conexión con el jardín."
+  - pregunta: "¿Entregan en el interior del país?"
+    respuesta: "Sí. Tenemos grúas y vehículos propios y entregamos e instalamos en todo Paraguay, no solo en Gran Asunción. El traslado se detalla en la cotización según la distancia."
+  - pregunta: "¿Quién hace el trabajo?"
+    respuesta: "Equipo técnico propio de Multitainer: arquitectos, ingenieros, soldadores, electricistas, plomeros y especialistas en terminaciones. No subcontratamos, así controlamos la calidad de principio a fin."
+  - pregunta: "¿El ladrillo y el microcemento son parte del contenedor?"
+    respuesta: "Son terminaciones que sumamos sobre la estructura del contenedor. Por dentro y por fuera la casa se ve y se siente como una construcción de alto nivel."
+  - pregunta: "¿Una casa de contenedor es fresca en verano?"
+    respuesta: "Sí. Ponemos revestimiento térmico en paredes y techo, y aire acondicionado en los ambientes. El interior se mantiene confortable todo el año."
 metaTitle: "Casa de lujo con celosía de ladrillo"
-metaDescription: "Casa de diseño en contenedores con muros de celosía de ladrillo rojo, techo mariposa y dormitorios editoriales que abren a patios con enredaderas."
+metaDescription: "Casa de diseño en contenedores con muros de celosía de ladrillo, techo mariposa y dormitorios que abren a patios con enredaderas."
 ---
 
-Casa de diseño en contenedores con muros de celosía de ladrillo rojo, techo mariposa y dormitorios editoriales que abren a patios con enredaderas. Construido por Multitainer con contenedores marítimos, con entrega e instalación en Asunción y todo el Paraguay.
+Un proyecto pensado para descansar. Los muros de celosía de ladrillo filtran la luz y dan privacidad sin cerrar el paisaje, y los dormitorios abren a patios con enredaderas a través de grandes paños de vidrio. De noche, la iluminación convierte el ladrillo en el protagonista.
+
+Detrás de la estética hay contenedores marítimos transformados llave en mano por nuestro equipo. Es una muestra de cómo la construcción modular sirve también para viviendas de descanso y proyectos de hospedaje en el interior del país.

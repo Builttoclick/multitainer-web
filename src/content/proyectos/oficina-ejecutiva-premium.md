@@ -1,18 +1,18 @@
 ---
 titulo: "Oficina ejecutiva premium en contenedor"
 categoria: "oficina"
-zona: "Gran Asunción"
+zona: "Asunción"
 medida: "Módulos unidos"
-resumen: "Sala de directorio de alta gama construida en contenedores: microcemento, cielo raso con luz LED, mapa del Paraguay y mobiliario premium."
+resumen: "Sala de directorio de alta gama en contenedores: microcemento, cielo raso con luz LED, mapa del Paraguay y mobiliario premium."
 anio: 2024
 estado: "Terminado"
 destacado: true
 orden: 4
 portada: "/fotos/proyectos/oficina-ejecutiva-premium/oficina-ejecutiva-contenedor-microcemento-directorio-sofa-terciopelo__057.webp"
-portada_alt: "Oficina ejecutiva premium en contenedor — Multitainer"
+portada_alt: "Oficina ejecutiva premium en contenedor, Multitainer"
 destacados:
   - "Paredes de microcemento"
-  - "Cielo raso con cove LED"
+  - "Cielo raso con luz LED indirecta"
   - "Sala de directorio equipada"
   - "Terminación corporativa premium"
 galeria:
@@ -32,8 +32,21 @@ galeria:
     alt: "Sala de reuniones en contenedor con mesa de directorio, lamparas de bronce, pantalla y mapa del Paraguay sobre microcemento."
   - src: "/fotos/proyectos/oficina-ejecutiva-premium/oficina-ejecutiva-contenedor-directorio-vista-amplia-microcemento__119.webp"
     alt: "Vista amplia de la oficina ejecutiva premium en contenedor con mesa de directorio, sofa de terciopelo, mapa del Paraguay y microcemento."
+faqs:
+  - pregunta: "¿Una oficina en contenedor se ve profesional por dentro?"
+    respuesta: "Sí. Con terminaciones como microcemento, luz LED y buen mobiliario, el espacio se ve y se siente como una oficina premium, sin rastro del contenedor original."
+  - pregunta: "¿Cuánto tarda una oficina así?"
+    respuesta: "Una oficina llave en mano suele estar lista en alrededor de 28 días. En la cotización te damos el plazo exacto según el alcance."
+  - pregunta: "¿Quién hace el trabajo?"
+    respuesta: "Equipo técnico propio de Multitainer: arquitectos, ingenieros, soldadores, electricistas, plomeros y especialistas en terminaciones. No subcontratamos, así controlamos la calidad de principio a fin."
+  - pregunta: "¿Qué incluye el llave en mano?"
+    respuesta: "Revestimiento térmico, instalación eléctrica certificada, sanitaria completa, pisos terminados, ventanas, puertas, aire acondicionado y acabados. Lo recibís listo para usar."
+  - pregunta: "¿Puedo trasladar la oficina si me mudo?"
+    respuesta: "Sí. Una de las ventajas del módulo en contenedor es que se puede levantar con grúa y reinstalar en otro predio."
 metaTitle: "Oficina ejecutiva premium en contenedor"
-metaDescription: "Sala de directorio de alta gama construida en contenedores: microcemento, cielo raso con luz LED, mapa del Paraguay y mobiliario premium."
+metaDescription: "Sala de directorio de alta gama en contenedores: microcemento, cielo raso con luz LED, mapa del Paraguay y mobiliario premium."
 ---
 
-Sala de directorio de alta gama construida en contenedores: microcemento, cielo raso con luz LED, mapa del Paraguay y mobiliario premium. Construido por Multitainer con contenedores marítimos, con entrega e instalación en Asunción y todo el Paraguay.
+Una oficina ejecutiva que no parece un contenedor por dentro. Microcemento en las paredes, cielo raso con luz LED indirecta, sala de directorio y detalles como el mapa del Paraguay le dan una presencia corporativa seria, ideal para recibir clientes.
+
+Es el mismo tipo de espacio que usamos para grabar nuestros propios anuncios. Demuestra que una oficina en contenedor puede competir de igual a igual con una oficina tradicional, y estar lista en mucho menos tiempo.
