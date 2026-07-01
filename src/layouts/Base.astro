@@ -10,6 +10,7 @@ interface Props {
   titleTail?: string;
   description?: string;
   image?: string;
+  ogImage?: string;
   schema?: object | object[];
   noindex?: boolean;
 }
@@ -18,6 +19,7 @@ const {
   titleTail,
   description = 'Multitainer: construcción modular, alquiler y venta de contenedores en Asunción y todo Paraguay. Oficinas, obradores, vestuarios y showrooms llave en mano, con entrega nacional. Cotización en 24 horas.',
   image = '/fotos/hero-oficina-portuaria.jpg',
+  ogImage = '/og/multitainer-og.jpg',
   schema,
   noindex = false,
 } = Astro.props;
@@ -28,7 +30,7 @@ const fullTitle = title === site.name
   : `${title} · Multitainer | ${tail}`;
 
 const canonical = new URL(Astro.url.pathname, site.url).href;
-const ogImage = new URL(image, site.url).href;
+const ogImageUrl = new URL(ogImage, site.url).href;
 
 // LocalBusiness / GeneralContractor - NAP canónico
 const negocio = {
@@ -102,14 +104,14 @@ const allSchema = [negocio, ...(breadcrumb ? [breadcrumb] : []), ...extra];
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:locale" content="es_PY" />
-    <meta property="og:image" content={ogImage} />
+    <meta property="og:image" content={ogImageUrl} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Multitainer - construcción modular en contenedores" />
+    <meta property="og:image:alt" content="Multitainer - de contenedor a espacio terminado llave en mano" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={fullTitle} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image" content={ogImageUrl} />
     {allSchema.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}
   </head>
   <body>
