@@ -2,7 +2,7 @@
 import '../styles/global.css';
 import Navbar from '../components/Navbar.astro';
 import Footer from '../components/Footer.astro';
-import { site, waLink } from '../data/site';
+import { site, waLink, waLinkNum } from '../data/site';
 import { zonas } from '../data/zonas';
 
 interface Props {
@@ -13,6 +13,7 @@ interface Props {
   ogImage?: string;
   schema?: object | object[];
   noindex?: boolean;
+  waIntl?: string; // numero WhatsApp para el nav + boton flotante (default: central). Las paginas por vendedor lo overridean.
 }
 const {
   title = site.name,
@@ -22,6 +23,7 @@ const {
   ogImage = '/og/multitainer-og.jpg',
   schema,
   noindex = false,
+  waIntl = site.whatsappIntl,
 } = Astro.props;
 
 const tail = titleTail ?? 'alquiler, venta y modificación de contenedores cerca tuyo';
@@ -126,10 +128,10 @@ const allSchema = [negocio, ...(breadcrumb ? [breadcrumb] : []), ...extra];
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5B3VR25Z"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    <Navbar />
+    <Navbar waIntl={waIntl} />
     <main><slot /></main>
     <Footer />
-    <div class="ribbon"><a class="wa" href={waLink()} target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">WhatsApp</a></div>
+    <div class="ribbon"><a class="wa" href={waLinkNum(waIntl)} target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">WhatsApp</a></div>
     <script is:inline>
       (function () {
         var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;

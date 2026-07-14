@@ -33,15 +33,20 @@ export const site = {
 
 export const nav = [
   { label: 'Servicios', href: '/servicios/' },
+  { label: 'Catálogo', href: '/catalogo/' },
   { label: 'Proyectos', href: '/proyectos/' },
   { label: 'Áreas', href: '/areas-de-servicio/' },
   { label: 'Nosotros', href: '/sobre-nosotros/' },
   { label: 'Contacto', href: '/contacto/' },
 ];
 
-// URL de WhatsApp con mensaje pre-cargado
+// URL de WhatsApp a un numero cualquiera (formato intl sin + ni espacios), con mensaje pre-cargado.
+export const waLinkNum = (intl: string, msg = 'Hola Multitainer, quiero una cotización.') =>
+  `https://wa.me/${intl}?text=${encodeURIComponent(msg)}`;
+
+// URL de WhatsApp al numero central, con mensaje pre-cargado.
 export const waLink = (msg = 'Hola Multitainer, quiero una cotización.') =>
-  `${site.whatsapp}?text=${encodeURIComponent(msg)}`;
+  waLinkNum(site.whatsappIntl, msg);
 
 // Equipo (del sitio viejo).
 // `foto`: ruta a la headshot en /public/equipo/ (ej '/equipo/marco.jpg').

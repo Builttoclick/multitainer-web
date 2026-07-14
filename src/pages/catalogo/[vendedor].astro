@@ -1,0 +1,50 @@
+---
+import Base from '../../layouts/Base.astro';
+import CatalogoGrid from '../../components/CatalogoGrid.astro';
+import { vendedores, waVendedor } from '../../data/vendedores';
+
+export async function getStaticPaths() {
+  return vendedores.map((v) => ({ params: { vendedor: v.slug }, props: { v } }));
+}
+const { v } = Astro.props;
+
+const msg = 'Hola, vi el catálogo de Multitainer y quiero una cotización.';
+---
+<Base
+  title={`Catálogo Multitainer · ${v.nombre}`}
+  titleTail="módulos y contenedores llave en mano"
+  description={`Catálogo de módulos y contenedores Multitainer: oficinas, dormitorios, vestuarios, sanitarios y showrooms llave en mano. Cotizá directo con ${v.nombre} por WhatsApp.`}
+  noindex={true}
+  waIntl={v.whatsappIntl}
+>
+  <section class="phero"><div class="wrap">
+    <div class="crumbs"><a href="/">Inicio</a><span>›</span>Catálogo</div>
+    <span class="eyebrow">Tu asesor · {v.nombre}</span>
+    <h1>Catálogo <b>Multitainer</b></h1>
+    <p class="lead">Módulos y contenedores llave en mano para obra, industria y comercio. Elegí el que necesitás y cotizá directo conmigo por WhatsApp.</p>
+    <div class="cta-row">
+      <a class="btn btn-amber" href={waVendedor(v.whatsappIntl, msg)} target="_blank" rel="noopener">Escribir a {v.nombre.split(' ')[0]} por WhatsApp →</a>
+    </div>
+    <p class="asesor-contacto">
+      WhatsApp <a href={waVendedor(v.whatsappIntl, msg)} target="_blank" rel="noopener">{v.whatsappLabel}</a>
+      <span class="sep">·</span>
+      Email <a href={`mailto:${v.email}`}>{v.email}</a>
+    </p>
+  </div></section>
+
+  <style>
+    .asesor-contacto { margin-top: 18px; color: var(--mut); font-size: 15px; }
+    .asesor-contacto a { color: #fff; font-weight: 600; }
+    .asesor-contacto a:hover { color: var(--amber); }
+    .asesor-contacto .sep { color: #5a6170; padding: 0 8px; }
+  </style>
+
+  <CatalogoGrid whatsappIntl={v.whatsappIntl} />
+
+  <section class="band">
+    <span class="eyebrow">Hablemos hoy</span>
+    <h2>Cotización en 24 horas</h2>
+    <p>Contame qué módulo necesitás y te paso precio y plazo. Entrega en máximo 28 días, con grúa propia y cobertura nacional.</p>
+    <a class="btn btn-amber" href={waVendedor(v.whatsappIntl, msg)} target="_blank" rel="noopener">Cotizar con {v.nombre.split(' ')[0]} →</a>
+  </section>
+</Base>

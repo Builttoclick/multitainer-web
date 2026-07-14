@@ -1,0 +1,47 @@
+---
+import Base from '../../layouts/Base.astro';
+import CatalogoGrid from '../../components/CatalogoGrid.astro';
+import { site, waLink } from '../../data/site';
+import { productos } from '../../data/catalogo';
+
+const desc = 'Catálogo Multitainer 2026: módulos y contenedores llave en mano. Oficinas de obra, oficinas doble y premium, dormitorios, vestuarios, módulos sanitarios, showrooms y proyectos a medida. Entrega en máximo 28 días en todo Paraguay.';
+
+const itemList = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: 'Catálogo - Multitainer',
+  description: desc,
+  mainEntity: {
+    '@type': 'ItemList',
+    itemListElement: productos.map((p, i) => ({
+      '@type': 'ListItem', position: i + 1, name: p.titulo,
+    })),
+  },
+};
+---
+<Base
+  title="Catálogo"
+  titleTail="oficinas, dormitorios, vestuarios y showrooms en contenedor"
+  description={desc}
+  schema={itemList}
+>
+  <section class="phero"><div class="wrap">
+    <div class="crumbs"><a href="/">Inicio</a><span>›</span>Catálogo</div>
+    <span class="eyebrow">Catálogo 2026</span>
+    <h1>Módulos y contenedores <b>llave en mano</b></h1>
+    <p class="lead">Oficinas, dormitorios, vestuarios, sanitarios y showrooms en contenedor, listos para instalar. Todo se adapta a tu medida, con entrega en máximo 28 días y cobertura nacional.</p>
+    <div class="cta-row">
+      <a class="btn btn-amber" href={waLink('Hola Multitainer, vi el catálogo y quiero una cotización.')} target="_blank" rel="noopener">Cotizar por WhatsApp →</a>
+      <a class="btn btn-ghost" href="/proyectos/">Ver proyectos entregados</a>
+    </div>
+  </div></section>
+
+  <CatalogoGrid whatsappIntl={site.whatsappIntl} />
+
+  <section class="band">
+    <span class="eyebrow">Hablemos hoy</span>
+    <h2>Cotización en 24 horas</h2>
+    <p>Contanos qué módulo necesitás y te enviamos precio y plazo. Entrega en máximo 28 días, con grúa propia y cobertura en todo el país.</p>
+    <a class="btn btn-amber" href={waLink('Hola Multitainer, vi el catálogo y quiero una cotización.')} target="_blank" rel="noopener">Escribir por WhatsApp →</a>
+  </section>
+</Base>

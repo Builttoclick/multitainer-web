@@ -1,0 +1,172 @@
+---
+// Grilla del catalogo, compartida por /catalogo/[vendedor] y /catalogo/ (central).
+// Todos los botones "Cotizar" apuntan al numero que se pase por prop (asi cada
+// vendedor rutea a SU WhatsApp desde una sola fuente de contenido).
+import { productos, usps, fotoUrl } from '../data/catalogo';
+import { waVendedor } from '../data/vendedores';
+
+interface Props {
+  whatsappIntl: string; // numero destino (vendedor o central)
+}
+const { whatsappIntl } = Astro.props;
+---
+
+<!-- franja de USPs -->
+<section class="usps-band"><div class="wrap">
+  <ul class="usps">
+    {usps.map((u) => <li>{u}</li>)}
+  </ul>
+</div></section>
+
+<!-- grilla de productos -->
+<section class="pad"><div class="wrap">
+  <div class="head">
+    <span class="eyebrow">Catálogo 2026</span>
+    <h2>Módulos llave en mano</h2>
+    <p>Estos son nuestros módulos más pedidos. Todos se adaptan a tu medida y necesidad. Tocá una foto para verla en grande y cotizá el que te sirva por WhatsApp.</p>
+  </div>
+
+  <div class="cat-grid">
+    {productos.map((p) => (
+      <article class="pc reveal">
+        <button
+          class="pc-ph"
+          type="button"
+          data-full={fotoUrl(p.slug, p.fotos[0].file)}
+          data-group={p.slug}
+          data-label={p.titulo}
+          aria-label={`Ver fotos de ${p.titulo}`}
+        >
+          <img src={fotoUrl(p.slug, p.fotos[0].file)} alt={p.fotos[0].alt} loading="lazy" />
+          <span class="pc-tipo">{p.tipo}</span>
+          <span class="pc-more">{p.fotos.length} fotos</span>
+        </button>
+
+        <div class="pc-body">
+          <h3>{p.titulo}</h3>
+          <p class="pc-desc">{p.desc}</p>
+          <ul class="pc-specs">
+            {p.specs.map((s) => <li>{s}</li>)}
+          </ul>
+
+          <div class="pc-thumbs">
+            {p.fotos.slice(1).map((f) => (
+              <button
+                class="pc-th"
+                type="button"
+                data-full={fotoUrl(p.slug, f.file)}
+                data-group={p.slug}
+                data-label={p.titulo}
+                aria-label={`Foto de ${p.titulo}`}
+              >
+                <img src={fotoUrl(p.slug, f.file)} alt={f.alt} loading="lazy" />
+              </button>
+            ))}
+          </div>
+
+          <a
+            class="btn btn-amber pc-cta"
+            href={waVendedor(whatsappIntl, `Hola, vi el catálogo de Multitainer y quiero cotizar: ${p.titulo}.`)}
+            target="_blank"
+            rel="noopener"
+          >Cotizar por WhatsApp →</a>
+        </div>
+      </article>
+    ))}
+  </div>
+
+  <p class="cat-foot">¿Necesitás otra medida o una combinación a medida? Escribinos y lo resolvemos.</p>
+</div></section>
+
+<style>
+  .usps-band { background: var(--blue-d); border-top: 4px solid var(--amber); border-bottom: 1px solid var(--line); }
+  .usps { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 34px; padding: 20px 24px; margin: 0; }
+  .usps li { position: relative; color: #fff; font-family: var(--h); font-weight: 700; text-transform: uppercase; font-size: 13px; letter-spacing: .05em; padding-left: 24px; }
+  .usps li::before { content: "✓"; position: absolute; left: 0; top: -1px; color: var(--amber); font-weight: 900; }
+
+  .cat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+
+  .pc { background: var(--ink2); border: 1px solid var(--line); border-radius: 6px; overflow: hidden; display: flex; flex-direction: column; transition: .2s; }
+  .pc:hover { border-color: var(--amber); transform: translateY(-4px); }
+
+  .pc-ph { position: relative; display: block; width: 100%; padding: 0; border: 0; background: var(--ink3); cursor: zoom-in; aspect-ratio: 4 / 3; overflow: hidden; }
+  .pc-ph img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease; }
+  .pc:hover .pc-ph img { transform: scale(1.06); }
+  .pc-tipo { position: absolute; top: 0; left: 0; background: var(--amber); color: #1a1205; font-family: var(--h); font-weight: 800; text-transform: uppercase; font-size: 12px; letter-spacing: .04em; padding: 6px 12px; border-bottom-right-radius: 5px; }
+  .pc-more { position: absolute; right: 10px; bottom: 10px; background: rgba(12, 13, 16, .8); color: #fff; font-family: var(--h); font-weight: 700; text-transform: uppercase; font-size: 11px; letter-spacing: .06em; padding: 5px 10px; border-radius: 3px; pointer-events: none; }
+
+  .pc-body { padding: 20px 20px 22px; display: flex; flex-direction: column; flex: 1; }
+  .pc-body h3 { font-size: 20px; color: #fff; margin: 0 0 6px; text-transform: none; letter-spacing: 0; }
+  .pc-desc { color: var(--mut); font-size: 14.5px; margin: 0 0 14px; }
+
+  .pc-specs { list-style: none; display: grid; gap: 7px; margin: 0 0 16px; }
+  .pc-specs li { position: relative; padding-left: 22px; color: #c5cad3; font-size: 14px; line-height: 1.45; }
+  .pc-specs li::before { content: ""; position: absolute; left: 0; top: 7px; width: 9px; height: 9px; background: var(--amber); clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 72%, 0 100%); }
+
+  .pc-thumbs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 18px; }
+  .pc-th { padding: 0; border: 1px solid var(--line); border-radius: 4px; overflow: hidden; background: var(--ink3); cursor: zoom-in; aspect-ratio: 1 / 1; transition: border-color .16s; }
+  .pc-th:hover { border-color: var(--amber); }
+  .pc-th img { width: 100%; height: 100%; object-fit: cover; }
+
+  .pc-cta { margin-top: auto; justify-content: center; width: 100%; }
+
+  .cat-foot { text-align: center; color: var(--mut); font-size: 15px; margin-top: 34px; }
+
+  @media (max-width: 900px) { .cat-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .cat-grid { grid-template-columns: 1fr; } }
+</style>
+
+<script is:inline>
+  (function () {
+    var triggers = Array.prototype.slice.call(document.querySelectorAll('[data-full][data-group]'));
+    if (!triggers.length) return;
+
+    // agrupar por producto para que prev/next se quede dentro del mismo modulo
+    var groups = {};
+    triggers.forEach(function (t) {
+      var g = t.getAttribute('data-group');
+      if (!groups[g]) groups[g] = [];
+      t._idx = groups[g].length;
+      t._grp = g;
+      groups[g].push({ full: t.getAttribute('data-full'), label: t.getAttribute('data-label') });
+    });
+
+    var lb = document.createElement('div');
+    lb.className = 'lb';
+    lb.innerHTML =
+      '<span class="lb-count"></span>' +
+      '<button class="lb-btn lb-x" aria-label="Cerrar"><svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg></button>' +
+      '<button class="lb-btn lb-prev" aria-label="Anterior"><svg viewBox="0 0 24 24"><path d="M15 18 9 12l6-6"/></svg></button>' +
+      '<button class="lb-btn lb-next" aria-label="Siguiente"><svg viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg></button>' +
+      '<div class="lb-stage"><img alt=""><div class="lb-cap"></div></div>';
+    document.body.appendChild(lb);
+    var lbImg = lb.querySelector('img'), lbCap = lb.querySelector('.lb-cap'), lbCount = lb.querySelector('.lb-count');
+    var curGroup = [], cur = 0;
+
+    function show(i) {
+      if (!curGroup.length) return;
+      cur = (i + curGroup.length) % curGroup.length;
+      var it = curGroup[cur];
+      lbImg.src = it.full; lbImg.alt = it.label;
+      lbCap.innerHTML = '<b>' + it.label + '</b>';
+      lbCount.textContent = (cur + 1) + ' / ' + curGroup.length;
+    }
+    function open(grp, i) { curGroup = groups[grp] || []; show(i); lb.classList.add('open'); document.body.style.overflow = 'hidden'; }
+    function close() { lb.classList.remove('open'); document.body.style.overflow = ''; }
+
+    triggers.forEach(function (t) { t.addEventListener('click', function () { open(t._grp, t._idx); }); });
+    lb.querySelector('.lb-x').addEventListener('click', close);
+    lb.querySelector('.lb-prev').addEventListener('click', function (e) { e.stopPropagation(); show(cur - 1); });
+    lb.querySelector('.lb-next').addEventListener('click', function (e) { e.stopPropagation(); show(cur + 1); });
+    lb.addEventListener('click', function (e) { if (e.target === lb || e.target.classList.contains('lb-stage')) close(); });
+    document.addEventListener('keydown', function (e) {
+      if (!lb.classList.contains('open')) return;
+      if (e.key === 'Escape') close();
+      else if (e.key === 'ArrowLeft') show(cur - 1);
+      else if (e.key === 'ArrowRight') show(cur + 1);
+    });
+    var sx = 0;
+    lb.addEventListener('touchstart', function (e) { sx = e.changedTouches[0].clientX; }, { passive: true });
+    lb.addEventListener('touchend', function (e) { var dx = e.changedTouches[0].clientX - sx; if (Math.abs(dx) > 45) show(cur + (dx < 0 ? 1 : -1)); }, { passive: true });
+  })();
+</script>

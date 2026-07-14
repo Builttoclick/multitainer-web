@@ -1,5 +1,7 @@
 ---
-import { nav, waLink } from '../data/site';
+import { nav, site, waLinkNum } from '../data/site';
+interface Props { waIntl?: string; }
+const { waIntl = site.whatsappIntl } = Astro.props;
 ---
 <header class="nav">
   <div class="wrap nav-in">
@@ -8,7 +10,7 @@ import { nav, waLink } from '../data/site';
       <ul>
         <li><a href="/">Inicio</a></li>
         {nav.map((n) => <li><a href={n.href}>{n.label}</a></li>)}
-        <li><a class="btn btn-amber cta" href={waLink()} target="_blank" rel="noopener">Cotizar ahora</a></li>
+        <li><a class="btn btn-amber cta" href={waLinkNum(waIntl)} target="_blank" rel="noopener">Cotizar ahora</a></li>
       </ul>
     </nav>
     <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" id="navtoggle">
