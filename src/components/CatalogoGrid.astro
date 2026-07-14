@@ -2,7 +2,8 @@
 // Grilla del catalogo, compartida por /catalogo/[vendedor] y /catalogo/ (central).
 // Todos los botones "Cotizar" apuntan al numero que se pase por prop (asi cada
 // vendedor rutea a SU WhatsApp desde una sola fuente de contenido).
-import { productos, usps, fotoUrl } from '../data/catalogo';
+// Los productos se agrupan en secciones por categoria (ver catalogo.ts).
+import { productos, categorias, usps, fotoUrl } from '../data/catalogo';
 import { waVendedor } from '../data/vendedores';
 
 interface Props {
@@ -18,62 +19,74 @@ const { whatsappIntl } = Astro.props;
   </ul>
 </div></section>
 
-<!-- grilla de productos -->
+<!-- grilla de productos por seccion -->
 <section class="pad"><div class="wrap">
   <div class="head">
     <span class="eyebrow">Catálogo 2026</span>
-    <h2>Módulos llave en mano</h2>
-    <p>Estos son nuestros módulos más pedidos. Todos se adaptan a tu medida y necesidad. Tocá una foto para verla en grande y cotizá el que te sirva por WhatsApp.</p>
+    <h2>Todo lo que construimos en contenedor</h2>
+    <p>Del módulo de obra a la casa de lujo, todo se adapta a tu medida. Tocá una foto para verla en grande y cotizá lo que te sirva por WhatsApp.</p>
   </div>
 
-  <div class="cat-grid">
-    {productos.map((p) => (
-      <article class="pc reveal">
-        <button
-          class="pc-ph"
-          type="button"
-          data-full={fotoUrl(p.slug, p.fotos[0].file)}
-          data-group={p.slug}
-          data-label={p.titulo}
-          aria-label={`Ver fotos de ${p.titulo}`}
-        >
-          <img src={fotoUrl(p.slug, p.fotos[0].file)} alt={p.fotos[0].alt} loading="lazy" />
-          <span class="pc-tipo">{p.tipo}</span>
-          <span class="pc-more">{p.fotos.length} fotos</span>
-        </button>
-
-        <div class="pc-body">
-          <h3>{p.titulo}</h3>
-          <p class="pc-desc">{p.desc}</p>
-          <ul class="pc-specs">
-            {p.specs.map((s) => <li>{s}</li>)}
-          </ul>
-
-          <div class="pc-thumbs">
-            {p.fotos.slice(1).map((f) => (
+  {categorias.map((cat) => {
+    const items = productos.filter((p) => p.categoria === cat.id);
+    if (!items.length) return null;
+    return (
+      <div class="cat-sec">
+        <div class="cat-sec-head">
+          <h3>{cat.titulo}</h3>
+          <p>{cat.sub}</p>
+        </div>
+        <div class="cat-grid">
+          {items.map((p) => (
+            <article class="pc reveal">
               <button
-                class="pc-th"
+                class="pc-ph"
                 type="button"
-                data-full={fotoUrl(p.slug, f.file)}
+                data-full={fotoUrl(p.dir, p.fotos[0].file)}
                 data-group={p.slug}
                 data-label={p.titulo}
-                aria-label={`Foto de ${p.titulo}`}
+                aria-label={`Ver fotos de ${p.titulo}`}
               >
-                <img src={fotoUrl(p.slug, f.file)} alt={f.alt} loading="lazy" />
+                <img src={fotoUrl(p.dir, p.fotos[0].file)} alt={p.fotos[0].alt} loading="lazy" />
+                <span class="pc-tipo">{p.tipo}</span>
+                <span class="pc-more">{p.fotos.length} fotos</span>
               </button>
-            ))}
-          </div>
 
-          <a
-            class="btn btn-amber pc-cta"
-            href={waVendedor(whatsappIntl, `Hola, vi el catálogo de Multitainer y quiero cotizar: ${p.titulo}.`)}
-            target="_blank"
-            rel="noopener"
-          >Cotizar por WhatsApp →</a>
+              <div class="pc-body">
+                <h4>{p.titulo}</h4>
+                <p class="pc-desc">{p.desc}</p>
+                <ul class="pc-specs">
+                  {p.specs.map((s) => <li>{s}</li>)}
+                </ul>
+
+                <div class="pc-thumbs">
+                  {p.fotos.slice(1).map((f) => (
+                    <button
+                      class="pc-th"
+                      type="button"
+                      data-full={fotoUrl(p.dir, f.file)}
+                      data-group={p.slug}
+                      data-label={p.titulo}
+                      aria-label={`Foto de ${p.titulo}`}
+                    >
+                      <img src={fotoUrl(p.dir, f.file)} alt={f.alt} loading="lazy" />
+                    </button>
+                  ))}
+                </div>
+
+                <a
+                  class="btn btn-amber pc-cta"
+                  href={waVendedor(whatsappIntl, `Hola, vi el catálogo de Multitainer y quiero cotizar: ${p.titulo}.`)}
+                  target="_blank"
+                  rel="noopener"
+                >Cotizar por WhatsApp →</a>
+              </div>
+            </article>
+          ))}
         </div>
-      </article>
-    ))}
-  </div>
+      </div>
+    );
+  })}
 
   <p class="cat-foot">¿Necesitás otra medida o una combinación a medida? Escribinos y lo resolvemos.</p>
 </div></section>
@@ -83,6 +96,12 @@ const { whatsappIntl } = Astro.props;
   .usps { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 34px; padding: 20px 24px; margin: 0; }
   .usps li { position: relative; color: #fff; font-family: var(--h); font-weight: 700; text-transform: uppercase; font-size: 13px; letter-spacing: .05em; padding-left: 24px; }
   .usps li::before { content: "✓"; position: absolute; left: 0; top: -1px; color: var(--amber); font-weight: 900; }
+
+  .cat-sec { margin-top: 56px; }
+  .cat-sec:first-of-type { margin-top: 0; }
+  .cat-sec-head { border-left: 4px solid var(--amber); padding-left: 16px; margin-bottom: 26px; }
+  .cat-sec-head h3 { font-size: clamp(22px, 3vw, 30px); color: #fff; margin: 0; }
+  .cat-sec-head p { color: var(--mut); font-size: 15.5px; margin: 6px 0 0; text-transform: none; }
 
   .cat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 
@@ -96,7 +115,7 @@ const { whatsappIntl } = Astro.props;
   .pc-more { position: absolute; right: 10px; bottom: 10px; background: rgba(12, 13, 16, .8); color: #fff; font-family: var(--h); font-weight: 700; text-transform: uppercase; font-size: 11px; letter-spacing: .06em; padding: 5px 10px; border-radius: 3px; pointer-events: none; }
 
   .pc-body { padding: 20px 20px 22px; display: flex; flex-direction: column; flex: 1; }
-  .pc-body h3 { font-size: 20px; color: #fff; margin: 0 0 6px; text-transform: none; letter-spacing: 0; }
+  .pc-body h4 { font-size: 20px; color: #fff; margin: 0 0 6px; text-transform: none; letter-spacing: 0; font-family: var(--h); font-weight: 800; }
   .pc-desc { color: var(--mut); font-size: 14.5px; margin: 0 0 14px; }
 
   .pc-specs { list-style: none; display: grid; gap: 7px; margin: 0 0 16px; }
@@ -110,7 +129,7 @@ const { whatsappIntl } = Astro.props;
 
   .pc-cta { margin-top: auto; justify-content: center; width: 100%; }
 
-  .cat-foot { text-align: center; color: var(--mut); font-size: 15px; margin-top: 34px; }
+  .cat-foot { text-align: center; color: var(--mut); font-size: 15px; margin-top: 44px; }
 
   @media (max-width: 900px) { .cat-grid { grid-template-columns: repeat(2, 1fr); } }
   @media (max-width: 560px) { .cat-grid { grid-template-columns: 1fr; } }
