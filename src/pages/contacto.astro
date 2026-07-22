@@ -77,6 +77,10 @@ const desc = 'Contactá a Multitainer: WhatsApp 0981 223 938, (021) 753 900, rec
       var txt = 'Hola Multitainer, soy ' + (n || 'un cliente') + '. Necesito: ' + s + '.';
       if (z) txt += ' Zona: ' + z + '.';
       if (m) txt += ' ' + m;
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'whatsapp_click', { wa_number: (wa.match(/\d+/) || [''])[0], wa_message: txt, button_location: 'form-contacto', page_path: location.pathname });
+      }
+      if (typeof window.clarity === 'function') { window.clarity('set', 'whatsapp_click', 'form-contacto'); }
       window.open(wa + '?text=' + encodeURIComponent(txt), '_blank', 'noopener');
     });
   })();
