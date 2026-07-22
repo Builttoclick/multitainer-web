@@ -3,7 +3,16 @@ import Base from '../layouts/Base.astro';
 import { site, waLink, team, equipoTecnico } from '../data/site';
 import { servicios } from '../data/servicios';
 import { zonas } from '../data/zonas';
-import { obras } from '../data/obras';
+import { proyectos } from '../data/proyectos';
+
+// Galeria de obras agrupada por proyecto: tiles visibles (grid) + recorrido completo del lightbox (flujo plano con etiqueta de proyecto)
+const galTiles = proyectos.filter((p) => p.tile);
+const galFlow: { src: string; w: number; h: number; label: string; i: number; n: number }[] = [];
+const galStarts: Record<string, number> = {};
+for (const p of proyectos) {
+  galStarts[p.slug] = galFlow.length;
+  p.photos.forEach((ph, i) => galFlow.push({ src: ph.src, w: ph.w, h: ph.h, label: p.label, i: i + 1, n: p.photos.length }));
+}
 
 // Reel de anuncios (videos servidos desde Cloudflare R2)
 const R2 = 'https://media.multitainer.com.py';
@@ -168,23 +177,25 @@ const homeFaqSchema = {
     <div class="head reveal">
       <span class="eyebrow">Obras reales</span>
       <h2>Lo que entregamos, por dentro y por fuera</h2>
-      <p>Viviendas, oficinas y espacios premium que construimos con contenedores. Tocá cualquier foto para verla en grande.</p>
+      <p>Viviendas, oficinas y espacios premium que construimos con contenedores. Tocá un proyecto y recorré todas sus fotos.</p>
     </div>
     <div class="obras" id="gal">
-      {obras.map((o, i) => (
+      {galTiles.map((p, i) => (
         <button
-          class={`obra reveal bup ${o.span}`}
-          style={`--d:${0.04 * (i % 4)}s; background-image:url(${o.lqip})`}
-          data-i={i} data-full={o.src} data-label={o.label}
-          aria-label={`Ampliar foto: ${o.label}`}>
-          <img class="media" src={o.thumb} alt={`${o.label} - obra de Multitainer en contenedor`} loading="lazy" decoding="async" width={o.w} height={o.h} onload="this.closest('.bup').classList.add('is-loaded')" />
+          class={`obra reveal bup ${p.span}`}
+          style={`--d:${0.04 * (i % 4)}s; background-image:url(${p.coverLqip})`}
+          data-start={galStarts[p.slug]}
+          aria-label={`Ver proyecto: ${p.label} (${p.photos.length} fotos)`}>
+          <img class="media" src={p.coverThumb} alt={`${p.label} - obra de Multitainer en contenedor`} loading="lazy" decoding="async" width={p.coverW} height={p.coverH} onload="this.closest('.bup').classList.add('is-loaded')" />
           <span class="ov"></span>
-          <span class="cat">{o.cat}</span>
-          <span class="lbl">{o.label}</span>
+          <span class="cat">{p.cat}</span>
+          <span class="lbl">{p.label}</span>
+          <span class="gcount" aria-hidden="true">{p.photos.length} fotos</span>
           <span class="exp" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span>
         </button>
       ))}
     </div>
+    <script type="application/json" id="galflow" set:html={JSON.stringify(galFlow)}></script>
     <div class="trust reveal"><b>Confían en nosotros:</b> 4 Pets · CONMEBOL · obras y empresas de todo el país.</div>
   </div></section>
 
@@ -450,6 +461,7 @@ const homeFaqSchema = {
   .obra .exp { position: absolute; right: 11px; top: 11px; z-index: 2; width: 30px; height: 30px; border-radius: 4px; background: rgba(12,13,16,.6); display: flex; align-items: center; justify-content: center; opacity: 0; transform: scale(.85); transition: .28s; pointer-events: none; }
   .obra:hover .exp { opacity: 1; transform: none; }
   .obra .exp svg { width: 15px; height: 15px; fill: none; stroke: #fff; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .obra .gcount { position: absolute; right: 11px; bottom: 12px; z-index: 2; font-family: var(--h); font-weight: 700; font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: #fff; background: rgba(12,13,16,.6); padding: 4px 8px; border-radius: 20px; pointer-events: none; }
   .obra::after { content: ""; position: absolute; left: 0; bottom: 0; width: 100%; height: 3px; background: var(--amber); transform: scaleX(0); transform-origin: left; transition: transform .3s ease; z-index: 3; }
   .obra:hover::after { transform: scaleX(1); }
   .obra.big { grid-column: span 2; grid-row: span 2; }
@@ -642,11 +654,13 @@ const homeFaqSchema = {
       v.addEventListener('ended', function () { reel.classList.remove('playing'); v.removeAttribute('controls'); v.currentTime = 0; });
     });
 
-    /* ---- Lightbox de obras ---- */
+    /* ---- Lightbox de obras (agrupado por proyecto: next infinito que salta de proyecto en proyecto) ---- */
+    var galFlowEl = document.getElementById('galflow');
     var triggers = Array.prototype.slice.call(document.querySelectorAll('.obra'));
-    if (triggers.length) {
-      var items = triggers.map(function (t) { return { full: t.getAttribute('data-full'), label: t.getAttribute('data-label') }; });
+    var items = galFlowEl ? JSON.parse(galFlowEl.textContent || '[]') : [];
+    if (triggers.length && items.length) {
       var cur = 0;
+      var preload = new Image();
       var lb = document.createElement('div');
       lb.className = 'lb';
       lb.innerHTML =
@@ -658,15 +672,16 @@ const homeFaqSchema = {
       document.body.appendChild(lb);
       var lbImg = lb.querySelector('img'), lbCap = lb.querySelector('.lb-cap'), lbCount = lb.querySelector('.lb-count');
       function show(i) {
-        cur = (i + items.length) % items.length;
+        cur = (i % items.length + items.length) % items.length;
         var it = items[cur];
-        lbImg.src = it.full; lbImg.alt = it.label;
-        lbCap.innerHTML = '<b>Obra</b> · ' + it.label;
-        lbCount.textContent = (cur + 1) + ' / ' + items.length;
+        lbImg.src = it.src; lbImg.alt = it.label;
+        lbCap.innerHTML = '<b>' + it.label + '</b> · foto ' + it.i + ' de ' + it.n;
+        lbCount.textContent = it.i + ' / ' + it.n;
+        var nx = items[(cur + 1) % items.length]; if (nx) preload.src = nx.src;
       }
       function open(i) { show(i); lb.classList.add('open'); document.body.style.overflow = 'hidden'; }
       function close() { lb.classList.remove('open'); document.body.style.overflow = ''; }
-      triggers.forEach(function (t, i) { t.addEventListener('click', function () { open(i); }); });
+      triggers.forEach(function (t) { t.addEventListener('click', function () { open(parseInt(t.getAttribute('data-start'), 10) || 0); }); });
       lb.querySelector('.lb-x').addEventListener('click', close);
       lb.querySelector('.lb-prev').addEventListener('click', function (e) { e.stopPropagation(); show(cur - 1); });
       lb.querySelector('.lb-next').addEventListener('click', function (e) { e.stopPropagation(); show(cur + 1); });
