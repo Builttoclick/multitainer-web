@@ -276,7 +276,15 @@
          necesidad de servidor. Con azar puro, en volúmenes chicos el reparto se
          desbalancea a la vista (una prueba real en /links dio 8/5/2 en 15 cargas),
          y ahora que el nombre se muestra, eso se nota y se convierte en un problema
-         con los asesores. Buckets de 20 s para que una ráfaga de clics igual cicle.
+         con los asesores.
+
+         BUCKET = 5 s. El largo del bucket NO afecta la equidad a largo plazo (siempre
+         da 33/33/33), solo afecta qué pasa en una ráfaga: todos los que entran dentro
+         del mismo bucket caen en el mismo asesor. Y la ráfaga es justo el caso de uso,
+         porque los clics llegan apelotonados apenas sale el post. Con 20 s un pico de
+         15 clics en medio minuto se lo llevaba casi entero uno solo (medido en vivo:
+         5/7/0 en 12 cargas). Más corto es estrictamente mejor: al mismo visitante ya
+         lo fija el storage, así que el bucket solo reparte entre personas distintas.
          ============================================================ */
       function activos() {
         var r = [];
@@ -289,7 +297,7 @@
       }
       function elegir() {
         var a = activos();
-        return a[Math.floor(Date.now() / 20000) % a.length];
+        return a[Math.floor(Date.now() / 5000) % a.length];
       }
 
       /* Asignación pegajosa: una vez que a alguien le tocó un asesor, le toca ese
