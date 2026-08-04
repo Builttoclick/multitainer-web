@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Multitainer · Hablá con tu asesor</title>
+<meta name="description" content="Te asignamos un asesor comercial de Multitainer para que te atienda por WhatsApp." />
+<meta name="robots" content="noindex, follow" />
+<meta name="theme-color" content="#0c0d10" />
+<link rel="canonical" href="https://multitainer.com.py/whatsapp" />
+<link rel="icon" href="/favicon.ico" sizes="any" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+<!-- OG / social -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Multitainer" />
+<meta property="og:title" content="Multitainer · Hablá con tu asesor" />
+<meta property="og:description" content="Te atiende un asesor comercial por WhatsApp." />
+<meta property="og:image" content="https://multitainer.com.py/og/multitainer-og.jpg" />
+<meta property="og:url" content="https://multitainer.com.py/whatsapp" />
+<meta property="og:locale" content="es_PY" />
+
+<!-- ===== Tracking (mismo stack que el sitio: GA4 + Clarity + Meta Pixel) ===== -->
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7090FR6F5S"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-7090FR6F5S');
+</script>
+<!-- Microsoft Clarity -->
+<script>
+  (function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  })(window,document,"clarity","script","xjbdw4znjc");
+</script>
+<!-- Meta Pixel -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window,document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1706534800554728');
+  fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1706534800554728&ev=PageView&noscript=1" /></noscript>
+
+<!-- Fuentes de marca (no bloqueantes) -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<style>
+  /* Va PRIMERO: sin esto, cualquier display propio le gana al atributo hidden
+     y el elemento "oculto" sigue ocupando lugar. */
+  [hidden]{display:none !important}
+
+  :root{
+    --ink:#0c0d10; --ink2:#16181d; --ink3:#1d2027;
+    --line:#272a31; --line2:#343842;
+    --blue:#1c66c4; --amber:#edb43f; --amber-d:#d89a1f;
+    --wa:#25d366; --wa-d:#1eb455;
+    --text:#e9ecf1; --mut:#9aa0ab;
+    --h:'Archivo',system-ui,-apple-system,sans-serif;
+    --b:'Inter',system-ui,-apple-system,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    background:var(--ink);
+    color:var(--text);
+    font-family:var(--b);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none}
+  .page{
+    min-height:100svh;
+    display:flex; align-items:center; justify-content:center;
+    padding:34px 18px 40px;
+    background:
+      radial-gradient(900px 420px at 50% -6%, rgba(28,102,196,.16), transparent 70%),
+      var(--ink);
+  }
+  .card{width:100%; max-width:400px; text-align:center}
+
+  /* ---- marca chica arriba ---- */
+  .brand{
+    display:inline-flex; align-items:center; gap:9px;
+    padding:7px 13px 7px 9px;
+    background:var(--ink2); border:1px solid var(--line); border-radius:3px;
+  }
+  .brand svg{width:22px; height:auto; display:block}
+  .brand b{
+    font-family:var(--h); font-weight:800; text-transform:uppercase;
+    letter-spacing:.14em; font-size:10.5px; color:var(--mut);
+  }
+
+  /* ---- el asesor ---- */
+  .who{margin-top:30px}
+  .kicker{
+    font-family:var(--h); font-weight:700; text-transform:uppercase;
+    letter-spacing:.2em; font-size:10.5px; color:var(--amber);
+  }
+  .avatar{
+    width:104px; height:104px; margin:16px auto 0;
+    display:flex; align-items:center; justify-content:center;
+    background:linear-gradient(160deg,var(--amber),var(--amber-d));
+    border-radius:50%;
+    font-family:var(--h); font-weight:900; font-size:38px; letter-spacing:.01em;
+    color:#1a1205;
+    box-shadow:0 0 0 5px rgba(237,180,63,.10);
+    overflow:hidden;
+  }
+  .avatar img{width:100%; height:100%; object-fit:cover; display:block}
+  .who h1{
+    font-family:var(--h); font-weight:900; text-transform:uppercase;
+    font-size:clamp(25px,6.6vw,32px); line-height:1.06; letter-spacing:-.01em;
+    color:#fff; margin:17px 0 0;
+  }
+  .role{margin-top:6px; font-size:14px; color:var(--mut)}
+  .role b{color:var(--text); font-weight:600}
+
+  /* ---- botón ---- */
+  .cta{
+    display:flex; align-items:center; justify-content:center; gap:11px;
+    margin-top:26px; padding:17px 20px;
+    background:var(--wa); color:#07260f;
+    border-radius:3px;
+    font-family:var(--h); font-weight:900; text-transform:uppercase;
+    letter-spacing:.02em; font-size:15px;
+    transition:background .14s ease, transform .14s ease;
+  }
+  .cta svg{width:23px; height:23px; display:block; flex:0 0 auto}
+  .cta:hover{background:var(--wa-d); transform:translateY(-1px)}
+  .cta:active{transform:translateY(0)}
+  .tel{
+    margin-top:11px;
+    font-family:var(--h); font-weight:700; letter-spacing:.14em;
+    font-size:12.5px; color:var(--mut);
+  }
+
+  /* ---- aviso de continuidad ---- */
+  .again{
+    margin-top:20px; padding:11px 14px;
+    background:var(--ink2); border:1px solid var(--line);
+    border-left:3px solid var(--amber);
+    border-radius:3px;
+    font-size:13px; line-height:1.45; color:var(--mut); text-align:left;
+  }
+  .again b{color:var(--text); font-weight:600}
+
+  /* ---- pie ---- */
+  .foot{margin-top:26px; font-size:12.5px; line-height:1.7; color:var(--mut)}
+  .foot a{color:var(--mut); border-bottom:1px solid var(--line2)}
+  .foot a:hover{color:var(--amber); border-bottom-color:var(--amber)}
+
+  @media (max-width:360px){
+    .avatar{width:92px; height:92px; font-size:34px}
+    .cta{padding:16px 14px; font-size:14px; gap:9px}
+  }
+</style>
+</head>
+<body>
+  <main class="page">
+    <div class="card">
+
+      <div class="brand">
+        <svg viewBox="0 0 623 516" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path fill="#04488E" d="M0 0 L311.5 173.5 L623 0 L623 516 L0 516 Z"/>
+          <path fill="#E1AD48" d="M118 181.7 L311.5 291.2 L505 181.7 L505 407 L118 407 Z"/>
+        </svg>
+        <b>Multitainer</b>
+      </div>
+
+      <!-- El HTML arranca con Carlos hardcodeado: si el JS no corre, la página
+           igual queda coherente y el botón lleva a un WhatsApp que existe.
+           El costo es un sesgo hacia Carlos SOLO en el caso sin JS. -->
+      <section class="who">
+        <p class="kicker" id="kicker">Te va a atender</p>
+        <div class="avatar" id="avatar">CG</div>
+        <h1 id="nombre">Carlos González</h1>
+        <p class="role">Asesor comercial <b>·</b> Multitainer</p>
+      </section>
+
+      <p class="again" id="again" hidden></p>
+
+      <a class="cta" id="wa" data-id="asesor" data-asesor="carlos"
+         href="https://wa.me/595986641000?text=Hola%20Carlos%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20contenedores."
+         target="_blank" rel="noopener">
+        <svg viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.2 1.6 6L4 29l8.2-1.6c1.7.9 3.6 1.4 5.6 1.4h.2c6.6 0 12-5.4 12-12S22.6 3 16 3zm0 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-4.9 1 1-4.7-.3-.5c-1-1.6-1.5-3.4-1.5-5.3C4.4 9.6 9.6 4.4 16 4.4S27.6 9.6 27.6 16 22.4 24.8 16 24.8zm6.4-8.1c-.35-.18-2.06-1.02-2.38-1.13-.32-.12-.55-.18-.79.17-.23.35-.9 1.13-1.1 1.36-.2.23-.4.26-.75.09-.35-.18-1.48-.55-2.82-1.74-1.04-.93-1.75-2.08-1.95-2.43-.2-.35-.02-.54.15-.71.16-.16.35-.4.53-.61.18-.2.23-.35.35-.58.12-.23.06-.44-.03-.61-.09-.17-.79-1.9-1.08-2.6-.28-.68-.57-.59-.79-.6h-.67c-.23 0-.61.09-.93.44-.32.35-1.22 1.19-1.22 2.9 0 1.71 1.25 3.36 1.42 3.59.17.23 2.46 3.76 5.96 5.27.83.36 1.48.57 1.99.73.83.26 1.59.23 2.19.14.67-.1 2.06-.84 2.35-1.65.29-.81.29-1.5.2-1.65-.09-.15-.32-.23-.67-.4z"/></svg>
+        Hablar por WhatsApp
+      </a>
+      <p class="tel" id="tel">0986 641 000</p>
+
+      <p class="foot">
+        Multitainer · Contenedores y construcción modular<br>
+        <a href="https://multitainer.com.py/catalogo/" data-id="catalogo">Ver el catálogo completo</a>
+      </p>
+
+    </div>
+  </main>
+
+  <script>
+    (function () {
+
+      /* ============================================================
+         ASESORES
+         Copia local del array de src/data/vendedores.ts. Esta página es un HTML
+         suelto fuera de Astro, así que NO importa ese archivo: si se agrega o se
+         saca un asesor, hay que tocar los dos lados.
+         activo:false lo saca de la rotación sin borrar nada más.
+         ============================================================ */
+      var ASESORES = [
+        { id: 'carlos', nombre: 'Carlos González', pila: 'Carlos', tel: '595986641000', label: '0986 641 000', activo: true },
+        { id: 'angel',  nombre: 'Ángel Casco',     pila: 'Ángel',  tel: '595986648000', label: '0986 648 000', activo: true },
+        { id: 'livio',  nombre: 'Livio Rolón',     pila: 'Livio',  tel: '595971423222', label: '0971 423 222', activo: true }
+      ];
+
+      var KEY = 'mt_asesor';
+      var COOKIE_DIAS = 400; // techo real de Chrome; pedir más no sirve de nada
+
+      /* ============================================================
+         MENSAJES POR ORIGEN  (?p=)
+         Lista blanca a propósito: el valor de la URL NUNCA se escribe en la página
+         ni se mete crudo en el mensaje. Si viene cualquier otra cosa, cae al default.
+         ============================================================ */
+      var ORIGENES = {
+        oficina:  'vi el post de la oficina en contenedor y quiero saber el precio',
+        deposito: 'vi el post del depósito y quiero saber el precio',
+        casa:     'vi el post de la casa en contenedor y quiero saber el precio',
+        obrador:  'vi el post del obrador y quiero saber el precio',
+        local:    'vi el post del local comercial y quiero saber el precio',
+        precio:   'comenté en el post y quiero saber el precio',
+        ig:       'te escribo desde Instagram y quiero información',
+        _def:     'quiero información sobre los contenedores'
+      };
+
+      function origen() {
+        try {
+          var p = (new URLSearchParams(location.search).get('p') || '').toLowerCase();
+          return Object.prototype.hasOwnProperty.call(ORIGENES, p) && p.charAt(0) !== '_' ? p : '';
+        } catch (e) { return ''; }
+      }
+
+      function leerCookie(n) {
+        var m = document.cookie.match(new RegExp('(?:^|; )' + n + '=([^;]*)'));
+        return m ? decodeURIComponent(m[1]) : '';
+      }
+      function guardar(id) {
+        try { localStorage.setItem(KEY, id); } catch (e) {}
+        try {
+          document.cookie = KEY + '=' + encodeURIComponent(id) +
+            ';max-age=' + (COOKIE_DIAS * 86400) + ';path=/;SameSite=Lax';
+        } catch (e) {}
+      }
+      function guardado() {
+        var v = '';
+        try { v = localStorage.getItem(KEY) || ''; } catch (e) {}
+        if (!v) { try { v = leerCookie(KEY); } catch (e) {} }
+        return v;
+      }
+
+      /* ============================================================
+         ELECCIÓN
+         Reparto por reloj, NO por Math.random(). El reloj es un contador global que
+         todos los visitantes leen igual, así que a la larga da 33/33/33 exacto sin
+         necesidad de servidor. Con azar puro, en volúmenes chicos el reparto se
+         desbalancea a la vista (una prueba real en /links dio 8/5/2 en 15 cargas),
+         y ahora que el nombre se muestra, eso se nota y se convierte en un problema
+         con los asesores. Buckets de 20 s para que una ráfaga de clics igual cicle.
+         ============================================================ */
+      function activos() {
+        var r = [];
+        for (var i = 0; i < ASESORES.length; i++) if (ASESORES[i].activo) r.push(ASESORES[i]);
+        return r.length ? r : ASESORES.slice(); // nunca dejar la página sin asesor
+      }
+      function porId(id) {
+        for (var i = 0; i < ASESORES.length; i++) if (ASESORES[i].id === id) return ASESORES[i];
+        return null;
+      }
+      function elegir() {
+        var a = activos();
+        return a[Math.floor(Date.now() / 20000) % a.length];
+      }
+
+      /* Asignación pegajosa: una vez que a alguien le tocó un asesor, le toca ese
+         para siempre. localStorage no vence nunca; la cookie es el respaldo por si
+         se limpia uno de los dos. Si el asesor guardado quedó inactivo, se re-sortea
+         y se pisa lo guardado. */
+      function asignar() {
+        var g = guardado();
+        if (g) {
+          var v = porId(g);
+          if (v && v.activo) {
+            // Reescribe SIEMPRE los dos lados, no solo el que faltaba. Hace dos cosas:
+            // si uno de los dos se borró, el que sobrevivió lo repuebla (si no, la
+            // redundancia servía en un solo sentido); y de paso renueva los 400 días
+            // de la cookie en cada visita, así al que vuelve seguido no se le vence nunca.
+            guardar(v.id);
+            return { v: v, vuelve: true };
+          }
+        }
+        var nuevo = elegir();
+        guardar(nuevo.id);
+        return { v: nuevo, vuelve: false };
+      }
+
+      function iniciales(nombre) {
+        var p = nombre.split(/\s+/);
+        return ((p[0] || '').charAt(0) + (p[1] || '').charAt(0)).toUpperCase();
+      }
+
+      // ---- pintar ----
+      var r = asignar();
+      var v = r.v;
+      var org = origen();
+      var msg = 'Hola ' + v.pila + ', ' + (ORIGENES[org] || ORIGENES._def) + '.';
+
+      var elWa = document.getElementById('wa');
+      elWa.href = 'https://wa.me/' + v.tel + '?text=' + encodeURIComponent(msg);
+      elWa.setAttribute('data-asesor', v.id);
+      document.getElementById('nombre').textContent = v.nombre;
+      document.getElementById('avatar').textContent = iniciales(v.nombre);
+      document.getElementById('tel').textContent = v.label;
+
+      // Al que vuelve se le dice que es el mismo de antes, no se lo reusa callado.
+      if (r.vuelve) {
+        document.getElementById('kicker').textContent = 'Tu asesor';
+        var again = document.getElementById('again');
+        again.innerHTML = 'Seguí tu conversación con <b>' + v.pila + '</b>';
+        again.hidden = false;
+      }
+
+      // ---- tracking (mismo esquema que /links) ----
+      function waInfo(a) {
+        try {
+          var u = new URL(a.href);
+          if (/(^|\.)wa\.me$/.test(u.hostname)) {
+            return { num: u.pathname.replace(/\D/g, ''), msg: u.searchParams.get('text') || '' };
+          }
+          return { num: (u.searchParams.get('phone') || '').replace(/\D/g, ''), msg: u.searchParams.get('text') || '' };
+        } catch (e) { return { num: '', msg: '' }; }
+      }
+      document.addEventListener('click', function (ev) {
+        var t = ev.target;
+        var a = t && t.closest ? t.closest('a[data-id]') : null;
+        if (!a) return;
+        var id = a.getAttribute('data-id');
+        var loc = 'whatsapp:' + id;
+        var isWa = /wa\.me|api\.whatsapp\.com/.test(a.href);
+
+        if (isWa) {
+          var info = waInfo(a);
+          if (typeof window.gtag === 'function') {
+            window.gtag('event', 'whatsapp_click', {
+              wa_number: info.num,
+              wa_message: info.msg,
+              wa_asesor: a.getAttribute('data-asesor') || '',
+              wa_origen: org || '(directo)',
+              wa_recurrente: r.vuelve ? 'si' : 'no',
+              button_location: loc,
+              page_path: location.pathname
+            });
+          }
+          if (typeof window.fbq === 'function') {
+            window.fbq('track', 'Lead', {
+              content_name: loc,
+              wa_number: info.num,
+              wa_asesor: a.getAttribute('data-asesor') || '',
+              wa_origen: org || '(directo)',
+              page_path: location.pathname
+            });
+          }
+        } else if (typeof window.gtag === 'function') {
+          window.gtag('event', 'link_click', {
+            button_location: loc,
+            link_url: a.href,
+            page_path: location.pathname
+          });
+        }
+        if (typeof window.clarity === 'function') {
+          window.clarity('set', isWa ? 'whatsapp_click' : 'link_click', loc);
+        }
+      }, true);
+    })();
+  </script>
+</body>
+</html>
