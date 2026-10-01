@@ -1,0 +1,29 @@
+---
+// Páginas legales. El texto NO se edita acá: vive en CLIENTES/MULTITAINER/LEGALES/LEGALES.md.
+// Después de editarlo: python ../../../../ADMIN/WORKSPACE/LEGALES-WEB/legales_md.py json ../../LEGALES/LEGALES.md src/legales/legales.json
+import Base from '../layouts/Base.astro';
+import legales from '../legales/legales.json';
+
+interface Props { slug: string; miga: string; tail: string; description: string }
+const { slug, miga, tail, description } = Astro.props;
+const p = (legales as Record<string, { title: string; lead: string; body: string }>)[slug];
+const lead = p.lead.replace(/^<p>/, '').replace(/<\/p>$/, '');
+---
+<Base title={p.title} titleTail={tail} description={description}>
+  <section class="phero"><div class="wrap">
+    <div class="crumbs"><a href="/">Inicio</a><span>›</span>{miga}</div>
+    <span class="eyebrow">Legales</span>
+    <h1>{p.title}</h1>
+    <p class="lead" set:html={lead} />
+  </div></section>
+
+  <section class="pad"><div class="wrap">
+    <div class="prose legal-txt" set:html={p.body} />
+  </div></section>
+</Base>
+
+<style is:global>
+  .legal-txt a { color: var(--amber); text-decoration: underline; text-underline-offset: 2px; overflow-wrap: anywhere; }
+  .legal-txt b { color: #fff; }
+  .legal-txt h2:first-child { margin-top: 0; }
+</style>

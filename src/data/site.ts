@@ -5,6 +5,7 @@
 export const site = {
   name: 'MULTITAINER',
   legalName: 'Multitainer S.A.',
+  ruc: '80070934-9',
   tagline: 'Construimos con contenedores',
   url: 'https://multitainer.com.py',
   // NAP
