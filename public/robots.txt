@@ -1,37 +1,60 @@
+# Paginas legales fuera de todos los rastreadores, incluidos los de IA (01-oct-2026).
 # Multitainer robots.txt
 User-agent: *
 Allow: /
+Disallow: /privacidad/
+Disallow: /terminos/
 Disallow: /admin/
 
 # Crawlers de IA: bienvenidos. Queremos que nos lean, entiendan y citen.
 User-agent: GPTBot
 Allow: /
+Disallow: /privacidad/
+Disallow: /terminos/
 
 User-agent: ChatGPT-User
 Allow: /
+Disallow: /privacidad/
+Disallow: /terminos/
 
 User-agent: OAI-SearchBot
 Allow: /
+Disallow: /privacidad/
+Disallow: /terminos/
 
 User-agent: ClaudeBot
 Allow: /
+Disallow: /privacidad/
+Disallow: /terminos/
 
 User-agent: anthropic-ai
 Allow: /
+Disallow: /privacidad/
+Disallow: /terminos/
 
 User-agent: Claude-Web
 Allow: /
+Disallow: /privacidad/
+Disallow: /terminos/
 
 User-agent: PerplexityBot
 Allow: /
+Disallow: /privacidad/
+Disallow: /terminos/
 
 User-agent: Google-Extended
 Allow: /
+Disallow: /privacidad/
+Disallow: /terminos/
 
 User-agent: Applebot-Extended
 Allow: /
+Disallow: /privacidad/
+Disallow: /terminos/
 
 User-agent: CCBot
 Allow: /
+Disallow: /privacidad/
+Disallow: /terminos/
 
 Sitemap: https://multitainer.com.py/sitemap-index.xml

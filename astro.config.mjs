@@ -8,7 +8,7 @@ export default defineConfig({
   integrations: [
     sitemap({
       // /admin y las paginas por vendedor (noindex, links privados) quedan fuera del sitemap
-      filter: (page) => !page.includes('/admin') && !/\/catalogo\/[^/]+\/$/.test(page),
+      filter: (page) => !page.includes('/admin') && !/\/catalogo\/[^/]+\/$/.test(page) && !/\/(privacidad|terminos)\/$/.test(page),
       changefreq: 'weekly',
       lastmod: new Date(),
       priority: 0.7,

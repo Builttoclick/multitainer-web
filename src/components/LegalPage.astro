@@ -9,7 +9,7 @@ const { slug, miga, tail, description } = Astro.props;
 const p = (legales as Record<string, { title: string; lead: string; body: string }>)[slug];
 const lead = p.lead.replace(/^<p>/, '').replace(/<\/p>$/, '');
 ---
-<Base title={p.title} titleTail={tail} description={description}>
+<Base title={p.title} titleTail={tail} description={description} noindex>
   <section class="phero"><div class="wrap">
     <div class="crumbs"><a href="/">Inicio</a><span>›</span>{miga}</div>
     <span class="eyebrow">Legales</span>
